@@ -1070,7 +1070,8 @@ UINT32 SOLDIERTYPE::GetChecksum( )
 	uiChecksum *= (this->stats.bExpLevel + 1);
 	uiChecksum += (this->ubProfile + 1);
 
-	for ( uiLoop = 0; uiLoop < this->inv.size(); uiLoop++ )
+	UINT32 invsize = this->inv.size();
+	for ( uiLoop = 0; uiLoop < invsize; ++uiLoop )
 	{
 		uiChecksum += this->inv[ uiLoop ].usItem;
 		uiChecksum += this->inv[ uiLoop ].ubNumberOfObjects;
@@ -1221,7 +1222,8 @@ UINT32 MERCPROFILESTRUCT::GetChecksum( )
 	// put in some multipliers too!
 	uiChecksum *= (this->bExpLevel + 1);
 
-	for ( uiLoop = 0; uiLoop < this->inv.size(); uiLoop++ )
+	UINT32 invsize = this->inv.size();
+	for ( uiLoop = 0; uiLoop < invsize; ++uiLoop )
 	{
 		uiChecksum += this->inv[ uiLoop ];
 		uiChecksum += this->bInvNumber[ uiLoop ];
