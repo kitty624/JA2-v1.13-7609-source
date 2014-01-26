@@ -20614,11 +20614,13 @@ UINT8 GetSquadleadersCountInVicinity( SOLDIERTYPE * pSoldier, BOOLEAN fWithHighe
 			// check if within distance
 			// if both have extended ear, the distance is bigger and they don't need to sea each other 
 			// note that enemy always get the bonus if within distance, regardless of extended ears
-			if (((( HasExtendedEarOn( pSoldier ) && HasExtendedEarOn( MercPtrs[ cnt ] )) || ( pSoldier->bTeam == ENEMY_TEAM ) ) && (PythSpacesAway( pSoldier->sGridNo, MercPtrs[ cnt ]->sGridNo ) <= gSkillTraitValues.usSLRadiusExtendedEar) ) ||
+			// Flugente: moved around arguments for speed reason
+			if ( fDontCheckDistance ||
+				(PythSpacesAway( pSoldier->sGridNo, MercPtrs[ cnt ]->sGridNo ) <= gSkillTraitValues.usSLRadiusNormal) ||
 				//((SoldierToVirtualSoldierLineOfSightTest( MercPtrs[ cnt ], pSoldier->sGridNo, pSoldier->pathing.bLevel, ANIM_STAND, TRUE, CALC_FROM_ALL_DIRS ) || 
 				//SoldierToVirtualSoldierLineOfSightTest( pSoldier, MercPtrs[ cnt ]->sGridNo, MercPtrs[ cnt ]->pathing.bLevel, ANIM_STAND, TRUE, CALC_FROM_ALL_DIRS ) ) && 
-				(PythSpacesAway( pSoldier->sGridNo, MercPtrs[ cnt ]->sGridNo ) <= gSkillTraitValues.usSLRadiusNormal) ||
-				fDontCheckDistance )
+				( ( pSoldier->bTeam == ENEMY_TEAM || (HasExtendedEarOn( pSoldier ) && HasExtendedEarOn( MercPtrs[ cnt ] ) ) ) && PythSpacesAway( pSoldier->sGridNo, MercPtrs[ cnt ]->sGridNo ) <= gSkillTraitValues.usSLRadiusExtendedEar )
+				)
 			{
 				// If checking for higher level SL
 				// also count in already aquired level increses from other SLs
@@ -20631,6 +20633,7 @@ UINT8 GetSquadleadersCountInVicinity( SOLDIERTYPE * pSoldier, BOOLEAN fWithHighe
 				{
 					ubNumberSL += NUM_SKILL_TRAITS( MercPtrs[ cnt ], SQUADLEADER_NT );
 				}
+
 				if (ubNumberSL >= gSkillTraitValues.ubSLMaxBonuses)
 					break;
 			}
@@ -20640,18 +20643,20 @@ UINT8 GetSquadleadersCountInVicinity( SOLDIERTYPE * pSoldier, BOOLEAN fWithHighe
 	// special loop for militia - they can get a bonus from our mercs
 	if ( pSoldier->bTeam == MILITIA_TEAM && ubNumberSL < gSkillTraitValues.ubSLMaxBonuses )
 	{
-		for ( cnt = gTacticalStatus.Team[ OUR_TEAM ].bFirstID ; cnt <= gTacticalStatus.Team[ OUR_TEAM ].bLastID ; cnt++ )
+		for ( cnt = gTacticalStatus.Team[ OUR_TEAM ].bFirstID ; cnt <= gTacticalStatus.Team[ OUR_TEAM ].bLastID ; ++cnt )
 		{
 			// Get active conscious soldier
 			if (MercPtrs[ cnt ] != pSoldier && MercPtrs[ cnt ]->bActive && //MercPtrs[ cnt ]->aiData.bShock < 20 &&
 				MercPtrs[ cnt ]->stats.bLife >= OKLIFE && HAS_SKILL_TRAIT( MercPtrs[ cnt ], SQUADLEADER_NT ))
 			{
 				// check if within distance
-				if (((HasExtendedEarOn( MercPtrs[ cnt ] ) && (PythSpacesAway( pSoldier->sGridNo, MercPtrs[ cnt ]->sGridNo ) <= gSkillTraitValues.usSLRadiusExtendedEar) ) ||
-				//((SoldierToVirtualSoldierLineOfSightTest( MercPtrs[ cnt ], pSoldier->sGridNo, pSoldier->pathing.bLevel, ANIM_STAND, TRUE, CALC_FROM_ALL_DIRS ) || 
-				//SoldierToVirtualSoldierLineOfSightTest( pSoldier, MercPtrs[ cnt ]->sGridNo, MercPtrs[ cnt ]->pathing.bLevel, ANIM_STAND, TRUE, CALC_FROM_ALL_DIRS ) ) && 
-				(PythSpacesAway( pSoldier->sGridNo, MercPtrs[ cnt ]->sGridNo ) <= gSkillTraitValues.usSLRadiusNormal)) ||
-				fDontCheckDistance )
+				// Flugente: moved around arguments for speed reason
+				if ( fDontCheckDistance ||
+					(PythSpacesAway( pSoldier->sGridNo, MercPtrs[ cnt ]->sGridNo ) <= gSkillTraitValues.usSLRadiusNormal) ||
+					//((SoldierToVirtualSoldierLineOfSightTest( MercPtrs[ cnt ], pSoldier->sGridNo, pSoldier->pathing.bLevel, ANIM_STAND, TRUE, CALC_FROM_ALL_DIRS ) || 
+					//SoldierToVirtualSoldierLineOfSightTest( pSoldier, MercPtrs[ cnt ]->sGridNo, MercPtrs[ cnt ]->pathing.bLevel, ANIM_STAND, TRUE, CALC_FROM_ALL_DIRS ) ) && 
+					((HasExtendedEarOn( MercPtrs[ cnt ] ) && PythSpacesAway( pSoldier->sGridNo, MercPtrs[ cnt ]->sGridNo ) <= gSkillTraitValues.usSLRadiusExtendedEar) ) 
+					)
 				{
 					// If checking for higher level SL
 					// also count in already aquired level increses from other SLs
@@ -20664,6 +20669,7 @@ UINT8 GetSquadleadersCountInVicinity( SOLDIERTYPE * pSoldier, BOOLEAN fWithHighe
 					{
 						ubNumberSL += NUM_SKILL_TRAITS( MercPtrs[ cnt ], SQUADLEADER_NT );
 					}
+
 					if (ubNumberSL >= gSkillTraitValues.ubSLMaxBonuses)
 						break;
 				}

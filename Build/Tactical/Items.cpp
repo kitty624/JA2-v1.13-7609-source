@@ -10912,7 +10912,7 @@ INT16 GetNightVisionRangeBonus( SOLDIERTYPE * pSoldier, UINT8 bLightLevel )
 	//ADB and AXP 28.03.2007: CtH bug fix: We also want to check on a firing weapon, "raised" alone is not enough ;)
 	bool usingGunScope = WeaponReady(pSoldier);
 	// CHRISL:
-	for (int i = BODYPOSSTART; i < BODYPOSFINAL; i++)
+	for (int i = BODYPOSSTART; i < BODYPOSFINAL; ++i )
 	{
 		// More optimization
 		pObj = &( pSoldier->inv[i]);
@@ -11327,15 +11327,14 @@ INT16 GetTotalVisionRangeBonus( SOLDIERTYPE * pSoldier, UINT8 bLightLevel )
 			bonus += GetCaveVisionRangeBonus(pSoldier, bLightLevel);
 		}
 	}
+	else if ( bLightLevel < NORMAL_LIGHTLEVEL_DAY )
+	{
+		bonus += GetBrightLightVisionRangeBonus(pSoldier, bLightLevel);
+	}
 
 	if ( bLightLevel < NORMAL_LIGHTLEVEL_NIGHT )
 	{
 		bonus += GetDayVisionRangeBonus(pSoldier, bLightLevel);
-	}
-
-	if ( bLightLevel < NORMAL_LIGHTLEVEL_DAY )
-	{
-		bonus += GetBrightLightVisionRangeBonus(pSoldier, bLightLevel);
 	}
 
 	// Flugente: drugs can alter our sight
@@ -13437,7 +13436,7 @@ INT16 GetWornStealth( SOLDIERTYPE * pSoldier )
 	INT8	bLoop;
 	INT16 ttl=0;
 
-	for (bLoop = HELMETPOS; bLoop <= LEGPOS; bLoop++)
+	for (bLoop = HELMETPOS; bLoop <= LEGPOS; ++bLoop)
 	{
 		if ( pSoldier->inv[bLoop].exists() == true )
 			ttl += GetStealthBonus(&pSoldier->inv[bLoop]);
@@ -14049,7 +14048,7 @@ BOOLEAN UseTotalMedicalKitPoints( SOLDIERTYPE * pSoldier, UINT16 usPointsToConsu
 
 	// add up kit points of all medkits
 	// CHRISL: Changed to dynamically determine max inventory locations.
-	for (ubPocket = HANDPOS; ubPocket < NUM_INV_SLOTS; ubPocket++)
+	for (ubPocket = HANDPOS; ubPocket < NUM_INV_SLOTS; ++ubPocket)
 	{
 		if ( IsMedicalKitItem( &( pSoldier->inv[ ubPocket ] ) ) )
 		{
