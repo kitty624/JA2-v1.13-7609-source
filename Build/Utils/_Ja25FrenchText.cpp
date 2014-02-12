@@ -373,7 +373,6 @@ STR16 gzIMPMinorTraitsHelpTextsScouting[]=
 	L"Si vous êtes dans le secteur, vous saurez la présence au non d'ennemis dans les secteurs alentours\n",
 	L"Empêche l'ennemi de prendre en embuscade votre escouade\n",
 	L"Empêche les chats sauvages de prendre en embuscade votre escouade\n",
-
 };
 STR16 gzIMPMinorTraitsHelpTextsSnitch[]=
 {
@@ -384,7 +383,6 @@ STR16 gzIMPMinorTraitsHelpTextsSnitch[]=
 	L"Can be put undercover in prisons.\n",	// TODO.Translate
 	L"Increases your reputation by %d every day if in good morale.\n",	// TODO.Translate
 	L"+%d to effective hearing range\n",	// TODO.Translate
-	
 };
 STR16 gzIMPMinorTraitsHelpTextsNone[]=
 {

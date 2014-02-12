@@ -386,7 +386,6 @@ STR16 gzIMPMinorTraitsHelpTextsSnitch[]=
 	L"Can be put undercover in prisons.\n",	// TODO.Translate
 	L"Increases your reputation by %d every day if in good morale.\n",	// TODO.Translate
 	L"+%d to effective hearing range\n",	// TODO.Translate
-	
 };
 STR16 gzIMPMinorTraitsHelpTextsNone[]=
 {

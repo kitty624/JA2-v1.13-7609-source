@@ -376,7 +376,6 @@ STR16 gzIMPMinorTraitsHelpTextsScouting[]=
 	L"Prevents enemy ambushes on your squad\n",
 	L"Prevents bloodcat ambushes on your squad\n",
 };
-
 STR16 gzIMPMinorTraitsHelpTextsSnitch[]=
 {
 	L"Will occasionally inform you about his teammates' opinions.\n",
@@ -386,7 +385,6 @@ STR16 gzIMPMinorTraitsHelpTextsSnitch[]=
 	L"Can be put undercover in prisons.\n",
 	L"Increases your reputation by %d every day if in good morale.\n",
 	L"+%d to effective hearing range\n",
-	
 };
 
 STR16 gzIMPMinorTraitsHelpTextsNone[]=
