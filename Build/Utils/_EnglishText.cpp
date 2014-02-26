@@ -8313,7 +8313,7 @@ STR16	szCampaignHistoryDetail[]=
 	L"attacked",
 	L"ambushed",
 	L"airdropped",
-
+		
 	L"The attack came from %s.",
 	L"%s were reinforced from %s.",
 	L"The attack came from %s, %s were reinforced from %s.",
@@ -8322,6 +8322,7 @@ STR16	szCampaignHistoryDetail[]=
 	L"south",
 	L"west",
 	L"and",
+	L"an unknown location",
 
 	L"Buildings in the sector were damaged. %d civilians were killed and %d wounded.",
 	L"During the attack, %s and %s called reinforcements.",
