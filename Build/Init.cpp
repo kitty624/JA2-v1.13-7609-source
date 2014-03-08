@@ -424,7 +424,27 @@ BOOLEAN LoadExternalGameplayData(STR directoryName)
 	LBEPocketPopup.clear();
 	strcpy(fileName, directoryName);
 	strcat(fileName, LBEPOCKETPOPUPFILENAME);
+
+#ifndef ENGLISH
+	AddLanguagePrefix(fileName);
+
+	if (FileExists(fileName))
+	{
+		// WANNE: Load language specific file
+		SGP_THROW_IFFALSE(ReadInLBEPocketPopups(fileName),LBEPOCKETPOPUPFILENAME);
+	}
+	else
+	{
+		// WANNE: If we fail to load, try loading just the default english file
+		strcpy(fileName, directoryName);
+		strcat(fileName, LBEPOCKETPOPUPFILENAME);
+		SGP_THROW_IFFALSE(ReadInLBEPocketPopups(fileName),LBEPOCKETPOPUPFILENAME);
+	}
+#else
+	// WANNE: Load english file
 	SGP_THROW_IFFALSE(ReadInLBEPocketPopups(fileName),LBEPOCKETPOPUPFILENAME);
+#endif
+
 
 #ifdef JA2UB
 
