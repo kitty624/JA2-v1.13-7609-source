@@ -1511,6 +1511,9 @@ void UpdateMilitiaSquads(INT16 sMapX, INT16 sMapY )
 
 				//ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, L"Roll %ld", iRandomRes);
 
+				// Flugente: as I once broke this, allow me to explain this part. We've determined the 'urge' to move to an adjacent sector.
+				// We now see wether an adjacent sector is a worthy target to move to. If we do not find a vali target, we stop the movement function
+
 				iRandomRes = 256;
 
 				for( x = 0; x < uiDirNumber; ++x)
