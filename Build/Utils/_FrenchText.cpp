@@ -1767,7 +1767,7 @@ CHAR16 Message[][STRING_LENGTH] =
 	L"Pas assez de place pour cette poche.",
 
 	L"%s a réparé au mieux : %s.",
-	L"%s a aidé %s pour réparer au mieux : %s.",	// TODO.Translate //A voir fini (to see finished)
+	L"%s a aidé %s pour réparer au mieux : %s.",
 };
 
 
@@ -1940,12 +1940,12 @@ STR16 pPersonnelAssignmentStrings[] =
 	L"Capturé(e)",
 	L"Hôpital", 
 	L"Vide",	// Vehicle is empty
-	L"Infiltré",	// facility: undercover prisoner (snitch)  // TODO.Translate //A voir fini (to see finished)
-	L"Répand une propagande",   // facility: spread propaganda  // TODO.Translate //A voir fini (to see finished)
-	L"Fait de la propagande",   // facility: spread propaganda (globally)  // TODO.Translate //A voir fini (to see finished)
-	L"Collecte les rumeurs",			// facility: gather rumours	  // TODO.Translate //A voir fini (to see finished)
-	L"Propagande",	     // spread propaganda  // TODO.Translate //A voir fini (to see finished)
-	L"Rumeurs",			// gather information  // TODO.Translate //A voir fini (to see finished)
+	L"Infiltré",	// facility: undercover prisoner (snitch)
+	L"Répand une propagande",   // facility: spread propaganda
+	L"Fait de la propagande",   // facility: spread propaganda (globally)
+	L"Collecte les rumeurs",			// facility: gather rumours
+	L"Propagande",	     // spread propaganda
+	L"Rumeurs",			// gather information
 };
 
 
@@ -1994,10 +1994,10 @@ STR16 pLongAssignmentStrings[] =
 	L"Capturé(e)",
 	L"Hôpital", // patient in a hospital 
 	L"Vide",	// Vehicle is empty
-	L"Infiltré", 	// facility: undercover prisoner (snitch)  // TODO.Translate //A voir fini (to see finished)
-	L"Répandre une propagande", 	// facility: spread propaganda  // TODO.Translate //A voir fini (to see finished)
-	L"Faire de la propagande",  	// facility: spread propaganda (globally)   // TODO.Translate //A voir fini (to see finished)
-	L"Récolter les rumeurs ",			// facility: gather rumours   // TODO.Translate //A voir fini (to see finished)
+	L"Infiltré", 	// facility: undercover prisoner (snitch)
+	L"Répandre une propagande", 	// facility: spread propaganda
+	L"Faire de la propagande",  	// facility: spread propaganda (globally)
+	L"Récolter les rumeurs ",			// facility: gather rumours
 	L"Propagande",  	// spread propaganda
 	L"Rumeurs", 		// gather information
 };
@@ -2200,8 +2200,8 @@ STR16 pSnitchMenuStrings[] =
 STR16 pSnitchMenuDescStrings[] =
 {
 	// snitch
-	L"Discuter du comportement du mouchard vis-à-vis de ses coéquipiers.", // TODO.Translate //A voir fini (to see finished)
-	L"Prendre une mission dans ce secteur.", // TODO.Translate //A voir fini (to see finished)
+	L"Discuter du comportement du mouchard vis-à-vis de ses coéquipiers.",
+	L"Prendre une mission dans ce secteur.",
 	L"Annuler",
 };
 
@@ -2219,7 +2219,7 @@ STR16 pSnitchToggleMenuDescStrings[] =
 {
 	L"Signaler toute plainte des autres mercenaires à votre commandant.",
 	L"Ne rien signaler.",
-	L"Essayer d'empêcher les chapardages et la prise de produits addictifs des autres mercenaires.", // TODO.Translate
+	L"Essayer d'empêcher les chapardages et la prise de produits addictifs des autres mercenaires.",
 	L"Ne pas se soucier de ce que font les autres mercenaires.",
 	L"Annuler",
 };
@@ -2227,8 +2227,8 @@ STR16 pSnitchToggleMenuDescStrings[] =
 STR16 pSnitchSectorMenuStrings[] =
 {
 	// sector assignments
-	L"Fait de la propagande",   // TODO.Translate //A voir fini (to see finished)
-	L"Récolte les rumeurs",   // TODO.Translate //A voir fini (to see finished)
+	L"Fait de la propagande",
+	L"Récolte les rumeurs",
 	L"Annuler",
 };
 
@@ -2262,7 +2262,6 @@ STR16 pSnitchGatheringRumoursResultStrings[] =
 	L"%s a entendu des rumeurs sur une activité ennemie dans le secteur %d.",
 
 };
-// /TODO.Translate
 
 STR16 pRemoveMercStrings[] =
 {
@@ -2473,7 +2472,7 @@ STR16 gzMercSkillTextNew[] =
 
 	// new minor traits
 	L"Opérateur radio",	// 21
-	L"Infiltré",	// 22   // TODO.Translate //A voir fini (to see finished)
+	L"Infiltré",	// 22
 
 	// second names for major skills
 	L"Mitrailleur",
@@ -6601,7 +6600,7 @@ STR16 New113Message[] =
 	L"%s [%d cart]\n%s %1.1f %s",
 	L"PA insuffisant ! Coût %d et vous avez %d.",
 	L"Astuce: %s",
-	L"Player strength: %d - Enemy strength: %6.0f",		// TODO.Translate Surrender values to be printed, if DISPLAY_SURRENDER_VALUES = TRUE
+	L"Force du joueur : %d - Force de l'ennemi : %6.0f",		// Surrender values to be printed, if DISPLAY_SURRENDER_VALUES = TRUE
 };
 
 STR16 New113HAMMessage[] = 
@@ -7976,10 +7975,10 @@ STR16	szFoodTextStr[]=
 
 STR16	szPrisonerTextStr[]=
 {
-	L"%d elites, %d regulars and %d admins were interrogated.",	// TODO.Translate
+	L"%d élites, %d réguliers et %d admins ont été interrogés.",
 	L"%d prisonniers ont payé l'argent de la rançon",
 	L"%d prisonniers ont révélé les positions ennemies.",
-	L"%d elites, %d regulars and %d admins joined our cause.",	// TODO.Translate
+	L"%d élites, %d réguliers et %d admins ont rejoint notre cause.",
 	L"Des prisonniers ont commencé une émeute : %s !",
 	L"%d prisonniers ont été envoyés : %s !",
 	L"Les prisonniers ont été libérés !",
@@ -8315,7 +8314,7 @@ STR16	szCampaignHistoryDetail[]=
 	L"du sud",
 	L"de l'ouest",
 	L"et",
-	L"d'une direction inconnue",	// TODO.Translate //A voir fini (to see finished)
+	L"d'une direction inconnue",
 
 	L"Des bâtiments ont été endommagés.",
 	L"Dans les combats, des bâtiments ont été endommagés. Il y a eu %d civil(s) tué(s) et %d blessé(s).",
@@ -8424,7 +8423,7 @@ STR16	szCampaignHistoryWebpageString[]=
 
 STR16   szTacticalInventoryDialogString[]=
 {
-        L"Manipulations de l'inventaire",    // TODO.Translate //A voir fini (to see finished)
+        L"Manipulations de l'inventaire",
 
         L"LVN",
         L"Recharger tout",
@@ -8438,8 +8437,8 @@ STR16   szTacticalInventoryDialogString[]=
 
         L"Caisses",
         L"Boîtes",
-        L"Lâcher sac/dos",	    // TODO.Translate //A voir fini long mot(to see finished)
-        L"Lâcher sac/dos",	    // TODO.Translate //A voir fini long mot(to see finished)
+        L"Drop B/P",		// TODO.Translate
+		L"Pickup B/P",		// TODO.Translate
 
         L"",
         L"",
@@ -8451,7 +8450,7 @@ STR16   szTacticalCoverDialogString[]=
 {
         L"Afficher couverture",
 
-        L"Non",	    // TODO.Translate //A voir fini (to see finished)
+        L"Non",
         L"Ennemi",
         L"Merc.",
         L"",
@@ -8466,17 +8465,17 @@ STR16   szTacticalCoverDialogString[]=
         L"Détecteur",
         L"",
 
-        L"Réseau A",	    // TODO.Translate //A voir fini long mot(to see finished)
-        L"Réseau B",	    // TODO.Translate //A voir fini long mot(to see finished)
-        L"Réseau C",	    // TODO.Translate //A voir fini long mot(to see finished)
-        L"Réseau D",	    // TODO.Translate //A voir fini long mot(to see finished)
+        L"Réseau A",	    
+        L"Réseau B",	    
+        L"Réseau C",	    
+        L"Réseau D",	    
 };
 
 STR16   szTacticalCoverDialogPrintString[]=
 {
         
-        L"Turning off cover/traps display",	    // TODO.Translate //A voir fini long mot(to see finished)
-        L"Afficher les zones dangereuses",	    // TODO.Translate //A voir fini long mot(to see finished)
+        L"Turning off cover/traps display",	    // TODO.Translate
+        L"Afficher les zones dangereuses",
         L"Afficher la vue du mercenaire",
         L"",
 
@@ -8485,9 +8484,9 @@ STR16   szTacticalCoverDialogPrintString[]=
         L"",
         L"",
 
-        L"Afficher réseau (piège)",	    // TODO.Translate //A voir fini long mot(to see finished)
-        L"Afficher les réseaux (pièges) par couleur",	    // TODO.Translate //A voir fini long mot(to see finished)
-        L"Afficher les pièges à proximité",	    // TODO.Translate //A voir fini long mot(to see finished)
+        L"Afficher réseau (piège)",
+        L"Afficher les réseaux (pièges) par couleur",
+        L"Afficher les pièges à proximité",
         L"",
 
         L"Afficher le réseau A",
