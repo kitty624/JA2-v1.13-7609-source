@@ -8082,7 +8082,7 @@ STR16	szBackgroundText_Value[]=
 	L" %s%d%% de chance de toucher maximum\n",
 	L" %s%d en audition pendant la nuit\n",
 	L" %s%d en audition pendant la journée\n",
-	L" %s%d effectivity at disarming traps\n",	// TODO.Translate
+	L" %s%d d'efficacité à désamorcer les pièges\n",
 
 	L" %s%d%% d'efficacité dans une approche amicale\n",
 	L" %s%d%% d'efficacité dans une approche directe\n",
@@ -8437,8 +8437,8 @@ STR16   szTacticalInventoryDialogString[]=
 
         L"Caisses",
         L"Boîtes",
-        L"Drop B/P",		// TODO.Translate
-		L"Pickup B/P",		// TODO.Translate
+        L"Déposer sac/dos", //A voir fini long mot(to see finished, long word)
+		L"Ramasser sac/dos", //A voir fini long mot(to see finished, long word)
 
         L"",
         L"",
@@ -8474,7 +8474,7 @@ STR16   szTacticalCoverDialogString[]=
 STR16   szTacticalCoverDialogPrintString[]=
 {
         
-        L"Turning off cover/traps display",	    // TODO.Translate
+        L"Pas d'affichage couverture/pièges",
         L"Afficher les zones dangereuses",
         L"Afficher la vue du mercenaire",
         L"",
