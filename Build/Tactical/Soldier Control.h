@@ -1505,6 +1505,8 @@ public:
 	UINT8	ubLastShockFromHit;
 	UINT8	ubLastAPFromHit;
 	UINT8	ubLastMoraleFromHit;
+	UINT8	iLastBulletImpact;
+	UINT8	iLastArmourProtection;
 
 public:
 	// CREATION FUNCTIONS

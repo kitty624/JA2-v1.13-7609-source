@@ -9336,6 +9336,8 @@ INT32 BulletImpact( SOLDIERTYPE *pFirer, BULLET *pBullet, SOLDIERTYPE * pTarget,
 	UINT16 usAttackingWeapon = 0;
 	INT32 sOrigGridNo = 0;
 	BOOLEAN fFragment = FALSE;
+	INT32 iTotalArmourProtection=0;
+
 	if (pBullet == NULL && pFirer )
 	{
 		usAttackingWeapon = pFirer->inv[pFirer->ubAttackingHand][0]->data.gun.ubGunAmmoType;
@@ -9406,7 +9408,7 @@ INT32 BulletImpact( SOLDIERTYPE *pFirer, BULLET *pBullet, SOLDIERTYPE * pTarget,
 
 	// up to 50% extra impact for making particularly accurate successful shots
 	iBonus = sHitBy / 2;
-	//NumMessage("Bonus = ",bonus);
+	//NumMessage("Bonus = ",bonus);	
 
 	iOrigImpact = iOrigImpact * (100 + iFluke + iBonus) / 100;
 
@@ -9429,13 +9431,20 @@ INT32 BulletImpact( SOLDIERTYPE *pFirer, BULLET *pBullet, SOLDIERTYPE * pTarget,
 		}
 	}
 
+	// sevenfm: store original impact
+	pTarget->iLastBulletImpact += iOrigImpact;
+
 	if (pubSpecial && (*pubSpecial == FIRE_WEAPON_BLINDED_BY_SPIT_SPECIAL || *pubSpecial == FIRE_WEAPON_BLINDED_SPECIAL) )
 	{
 		iImpact = iOrigImpact;
 	}
 	else
 	{
-		iImpact = iOrigImpact - TotalArmourProtection( pTarget, ubHitLocation, iOrigImpact, ubAmmoType );
+		iTotalArmourProtection = TotalArmourProtection( pTarget, ubHitLocation, iOrigImpact, ubAmmoType ); 
+		iImpact = iOrigImpact - iTotalArmourProtection;
+		
+		// sevenfm: store armour protection
+		pTarget->iLastArmourProtection += iTotalArmourProtection;
 	}
 
 	// calc minimum damage

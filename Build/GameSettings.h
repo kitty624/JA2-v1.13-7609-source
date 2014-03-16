@@ -1181,8 +1181,9 @@ typedef struct
 
 	// sevenfm: show enemy weapon above soldier in tactical
 	BOOLEAN fShowEnemyWeapon;
-	// show additional info in tactical (awareness, gas mask, nvg, armour)
-	UINT8 ubShowEnemyAdditionalInfo;
+	BOOLEAN fShowEnemyExtendedInfo;
+	// show awareness sight and level
+	BOOLEAN fShowEnemyAwareness;
 
 	//legion by Jazz
 	BOOLEAN fIndividualHiddenPersonNames;
@@ -1223,6 +1224,8 @@ typedef struct
 
 	UINT8 ubEnemyHitCount;
 	UINT8 ubPlayerHitCount;
+	BOOLEAN fShowHitInfo;
+	UINT8 ubAdditionalNCTHCursorInfo;
 
 	// sevenfm: new additional info above soldier
 	UINT8 ubShowSuppressionCount;
