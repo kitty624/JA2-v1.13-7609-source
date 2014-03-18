@@ -5015,7 +5015,9 @@ void BombMessageBoxCallBack( UINT8 ubExitValue )
 
 		if (Item[ gpTempSoldier->inv[HANDPOS].usItem ].remotetrigger )
 		{
-			SetOffBombsByFrequency( gpTempSoldier->ubID, ubExitValue );
+			// Flugente: jamming can prevent bomb activation
+			if ( !gSkillTraitValues.fVOJammingBlocksRemoteBombs || !SectorJammed() )
+				SetOffBombsByFrequency( gpTempSoldier->ubID, ubExitValue );
 		}
 		else
 		{
