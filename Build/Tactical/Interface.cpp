@@ -1705,7 +1705,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 	BOOLEAN		 fRaiseName = FALSE;
 	BOOLEAN		 fDoName = TRUE;
 	UINT16 iCounter2;
-	INT16			maxWidth = 40;		// sevenfm: maximum string length (in pixels) is used to determine x coordinate for additional info
 
 	GetSoldier( &pSoldier, usSoldierID );
 
@@ -1929,7 +1928,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 			FindFontCenterCoordinates( sXPos, (INT16)(sYPos ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 			gprintfdirty( sX, sY, NameStr );
 			mprintf( sX, sY, NameStr );
-			maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 			fRaiseName = TRUE;
 		}
 		else if ( gfUIMouseOnValidCatcher == 3 && pSoldier->ubID == gubUIValidCatcherID )
@@ -1938,7 +1936,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 			FindFontCenterCoordinates( sXPos, (INT16)(sYPos ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 			gprintfdirty( sX, sY, NameStr );
 			mprintf( sX, sY, NameStr );
-			maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 			fRaiseName = TRUE;
 		}
 		else if ( gfUIMouseOnValidCatcher == 4 && pSoldier->ubID == gubUIValidCatcherID )
@@ -1947,7 +1944,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 			FindFontCenterCoordinates( sXPos, (INT16)(sYPos ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 			gprintfdirty( sX, sY, NameStr );
 			mprintf( sX, sY, NameStr );
-			maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 			fRaiseName = TRUE;
 		}
 		else if ( pSoldier->bAssignment >= ON_DUTY )
@@ -1957,7 +1953,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 			FindFontCenterCoordinates( sXPos, (INT16)(sYPos ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 			gprintfdirty( sX, sY, NameStr );
 			mprintf( sX, sY, NameStr );
-			maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 			fRaiseName = TRUE;
 		}
 		else if ( pSoldier->bTeam == gbPlayerNum &&	pSoldier->bAssignment < ON_DUTY && pSoldier->bAssignment != CurrentSquad() && !(	pSoldier->flags.uiStatusFlags & SOLDIER_MULTI_SELECTED ) )
@@ -1970,7 +1965,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 			FindFontCenterCoordinates( sXPos, (INT16)(sYPos ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 			gprintfdirty( sX, sY, NameStr );
 			mprintf( sX, sY, NameStr );
-			maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 			fRaiseName = TRUE;
 		}
 
@@ -2028,7 +2022,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 				FindFontCenterCoordinates( sXPos, (INT16)( sYPos - 10 ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 				gprintfdirty( sX, sY, NameStr );
 				mprintf( sX, sY, NameStr );
-				maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 			}
 			else
 			{
@@ -2066,7 +2059,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 				FindFontCenterCoordinates( sXPos, sYPos, (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 				gprintfdirty( sX, sY, NameStr );
 				mprintf( sX, sY, NameStr );
-				maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 			}
 		}
 
@@ -2081,7 +2073,7 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 					INT16 interval = gGameExternalOptions.ubShowHealthBarsOnHead;
 					//if( interval > 3 )
 					//	interval -= 2;
-					sXPos += 27;
+					sXPos += 28;
 					sYPos += 7;
 					iBack = RegisterBackgroundRect(BGND_FLAG_SINGLE, NULL, sXPos, sYPos-1, (INT16)(sXPos + 24 ), (INT16)(sYPos + 3 + interval*3 ) );
 					if ( iBack != -1 )
@@ -2105,7 +2097,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 							SetFontForeground( FONT_MCOLOR_DKRED );
 						gprintfdirty( sXPos-2-len, sYPos-2, NameStr );
 						mprintf( sXPos-2-len, sYPos-2, NameStr );
-						maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 					}
 				}
 				else
@@ -2158,7 +2149,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 				FindFontCenterCoordinates( sXPos, (INT16)(sYPos + 10 ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 				gprintfdirty( sX, sY, NameStr );
 				mprintf( sX, sY, NameStr );
-				maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 			}
 			else
 			{
@@ -2171,7 +2161,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 				FindFontCenterCoordinates( sXPos, (INT16)( sYPos + 10 ), (INT16)(80 ), 1, pStr, TINYFONT1, &sX, &sY );
 				gprintfdirty( sX, sY, pStr );
 				mprintf( sX, sY, pStr );
-				maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 			
 				//-----------------	
 				if ( pSoldier->bInSector && pSoldier->ubProfile == NO_PROFILE )
@@ -2190,7 +2179,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 							FindFontCenterCoordinates( sXPos, (INT16)( sYPos + 20 ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 							gprintfdirty( sX, sY, NameStr );
 							mprintf( sX, sY, NameStr );
-							maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 						}
 						else if (gGameExternalOptions.fEnemyNames == TRUE && gGameExternalOptions.fEnemyRank == FALSE)
 						{
@@ -2210,7 +2198,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 										FindFontCenterCoordinates( sXPos, (INT16)( sYPos + 20 ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 										gprintfdirty( sX, sY, NameStr );
 										mprintf( sX, sY, NameStr );
-										maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 				
 										break;
 									}
@@ -2235,7 +2222,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 										FindFontCenterCoordinates( sXPos, (INT16)( sYPos + 20 ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 										gprintfdirty( sX, sY, NameStr );
 										mprintf( sX, sY, NameStr );
-										maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 
 										break;
 									}
@@ -2256,7 +2242,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 						FindFontCenterCoordinates( sXPos, (INT16)( sYPos + 20 ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 						gprintfdirty( sX, sY, NameStr );
 						mprintf( sX, sY, NameStr );
-						maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 					}
 					else if (gGameExternalOptions.fCivGroupName == TRUE && pSoldier->ubCivilianGroup > 0 )
 					{
@@ -2272,7 +2257,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 							FindFontCenterCoordinates( sXPos, (INT16)( sYPos + 20 ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 							gprintfdirty( sX, sY, NameStr );
 							mprintf( sX, sY, NameStr );
-							maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 						}
 					}
 				}
@@ -2282,18 +2266,21 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 	}
 	else //pSoldier->ubProfile != NO_PROFILE || ( pSoldier->flags.uiStatusFlags & SOLDIER_VEHICLE )
 	{
+		// show (roof) text
 		if ( pSoldier->pathing.bLevel != 0 )
 		{
-			// Display name
+			// sevenfm: fix for overlapping with SHOW_ENEMY_WEAPON feature
+			if( !gGameExternalOptions.fShowEnemyWeapon || !gfUIFullTargetFound )
+			{
 			SetFont( TINYFONT1 );
 			SetFontBackground( FONT_MCOLOR_BLACK );
 			SetFontForeground( FONT_YELLOW );
 
 			swprintf( NameStr, gzLateLocalizedString[ 15 ] );
-			FindFontCenterCoordinates( sXPos, (INT16)(sYPos + 10 ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
+				FindFontCenterCoordinates( sXPos, (INT16)(sYPos + 10), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 			gprintfdirty( sX, sY, NameStr );
 			mprintf( sX, sY, NameStr );
-			maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
+		}
 		}
 
 		pStr = GetSoldierHealthString( pSoldier );
@@ -2311,7 +2298,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 		FindFontCenterCoordinates( sXPos, sYPos, (INT16)(80 ), 1, pStr, TINYFONT1, &sX, &sY );
 		gprintfdirty( sX, sY, pStr );
 		mprintf( sX, sY, pStr );
-		maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 		
 		//-----------------	
 		if ( pSoldier->bInSector && pSoldier->ubProfile == NO_PROFILE )
@@ -2330,7 +2316,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 				FindFontCenterCoordinates( sXPos, (INT16)( sYPos -10 ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 				gprintfdirty( sX, sY, NameStr );
 				mprintf( sX, sY, NameStr );
-				maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 			}
 			else
 #endif
@@ -2349,7 +2334,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 					FindFontCenterCoordinates( sXPos, (INT16)( sYPos + 20 ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 					gprintfdirty( sX, sY, NameStr );
 					mprintf( sX, sY, NameStr );	
-					maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 				}
 				else if (gGameExternalOptions.fEnemyNames == TRUE)
 				{
@@ -2369,7 +2353,6 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 								FindFontCenterCoordinates( sXPos, (INT16)( sYPos + 20 ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
 								gprintfdirty( sX, sY, NameStr );
 								mprintf( sX, sY, NameStr );
-								maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 		
 								break;
 							}
@@ -2401,135 +2384,21 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 								//legion2
 								gprintfdirty( sX, sY, NameStr );
 								mprintf( sX, sY, NameStr );
-								maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
 
 								break;
 							}
 						}
 					}
 				}
-			
-				// show weapon name and additional info
-				BOOLEAN showExactInfo = FALSE;				
-				INT16 height = 0;
-				SOLDIERTYPE *pSelectedSoldier, *pTargetSoldier;
 
-				pSelectedSoldier = MercPtrs[ gusSelectedSoldier ];
-				pTargetSoldier = pSoldier;
-				// calc max range for exact info
-				if ( gusSelectedSoldier != NOBODY )
-					showExactInfo = ShowExactInfo( pSelectedSoldier, pTargetSoldier );
+				//FindFontCenterCoordinates( sXPos, (INT16)( sYPos ), (INT16)(80 ), 1, L"", TINYFONT1, &sX, &sY );
 
-				// show weapon/armour/items info
-				if ( gGameExternalOptions.fShowEnemyWeapon && gTacticalStatus.ubCurrentTeam == OUR_TEAM && pTargetSoldier->ubBodyType <= REGFEMALE )
-				{
-					height = 30;
-
-						SetFont( TINYFONT1 );
-						SetFontBackground( FONT_MCOLOR_BLACK );
-
-					if( !gGameExternalOptions.fEnemyRank || !gGameExternalOptions.fEnemyNames )
-						height = 10;
-
-					swprintf( NameStr, L"" );
-					GetEnemyInfoString( pSelectedSoldier, pTargetSoldier, showExactInfo, NameStr );
-					// print item name
-						FindFontCenterCoordinates( sXPos, (INT16)( sYPos + height ), (INT16)(80 ), 1, NameStr, TINYFONT1, &sX, &sY );
-						gprintfdirty( sX, sY, NameStr );
-						mprintf( sX, sY, NameStr );
-						maxWidth = __max( maxWidth, StringPixLength ( NameStr, TINYFONT1 ) );
+				// sevenfm: show weapon name and additional info
+				ShowEnemyWeapon( sX, sY, pSoldier );
+				ShowEnemyHealthBar( sX, sY, pSoldier );				
+				ShowAdditionalInfo( sX, sY, pSoldier );
+				ShowRankIcon( sXPos, sYPos, pSoldier );
 					}
-
-				height = 0;
-				FindFontCenterCoordinates( sXPos, (INT16)( sYPos + height ), (INT16)(80 ), 1, L"", TINYFONT1, &sX, &sY );
-				
-				// show enemy health bar
-				if( gGameExternalOptions.ubShowEnemyHealth > 1 && gTacticalStatus.ubCurrentTeam == OUR_TEAM )
-				{
-					UINT8 ubLines = gGameExternalOptions.ubShowEnemyHealth - 1;
-					INT32 iBarWidth = 24;
-					INT32 iBarHeight;
-
-					iBarHeight = 2 + 3 * ubLines - 1;
-					sY += 10;
-					sY -= iBarHeight;
-					sX -= iBarWidth / 2;
-					
-					iBack = RegisterBackgroundRect(BGND_FLAG_SINGLE, NULL, sX, sY, (INT16)(sX + iBarWidth), (INT16)(sY + iBarHeight ) );
-					if ( iBack != -1 )
-						SetBackgroundRectFilled( iBack );
-					
-					DrawEnemyHealthBar( pSoldier, sX, sY, ubLines, iBarWidth - 2, iBarHeight );
-				}
-
-				FindFontCenterCoordinates( sXPos, (INT16)( sYPos + height ), (INT16)(80 ), 1, L"", TINYFONT1, &sX, &sY );
-				sX-=maxWidth / 2 + StringPixLength ( L"***", TINYFONT1 );
-
-				// show additional info
-				if( gGameExternalOptions.fShowEnemyAwareness && gTacticalStatus.ubCurrentTeam == OUR_TEAM )
-				{
-					SetFont( TINYFONT1 );
-					SetFontBackground( FONT_MCOLOR_BLACK );
-					// show awareness sign only when in stealth mode or disguised
-					if( ( gusSelectedSoldier != NOBODY ) &&
-						( MercPtrs[ gusSelectedSoldier ]->bStealthMode || MercPtrs[ gusSelectedSoldier ]->bSoldierFlagMask & ( SOLDIER_COVERT_CIV | SOLDIER_COVERT_SOLDIER ) ) )
-					{
-						if( pSoldier->aiData.bOppList[ MercPtrs[ gusSelectedSoldier ]->ubID ] == SEEN_CURRENTLY )
-							swprintf( NameStr, L"%s", L"<*>" );
-						else
-							swprintf( NameStr, L"%s", L"<->" );
-
-						SetFontForeground( FONT_GRAY1 );
-						switch ( pSoldier->aiData.bAlertStatus )
-						{
-						case STATUS_GREEN:							// everything's OK, no suspicion
-							SetFontForeground( FONT_GREEN );
-							break;
-						case STATUS_YELLOW:							// he or his friend heard something
-							SetFontForeground( FONT_YELLOW );
-							break;
-						case STATUS_RED:                            // has definite evidence of opponent
-							SetFontForeground( FONT_ORANGE );
-							break;
-						case STATUS_BLACK:							// currently sees an active opponent
-							SetFontForeground( FONT_DKRED );
-							break;
-						}
-
-						if ( showExactInfo )
-						{
-							if( gGameExternalOptions.ubShowEnemyHealth > 1 )
-							{
-								gprintfdirty( sX + maxWidth / 2 - 15, sY + height, NameStr );
-								mprintf( sX + maxWidth / 2 - 13, sY + height, NameStr );	
-							}
-							else
-							{
-								gprintfdirty( sX, sY + height, NameStr );
-								mprintf( sX, sY + height, NameStr );	
-							}
-							height += 10;
-						}
-					}
-						}
-				// show rank icon
-				if( gGameExternalOptions.ubShowEnemyRankIcon && gTacticalStatus.ubCurrentTeam == OUR_TEAM )
-					//&& (!gGameExternalOptions.fEnemyNames) && (!gGameExternalOptions.fEnemyRank))
-				{
-					sX = sXPos + 50;
-					sY = sYPos + 17;
-					if(gGameExternalOptions.fEnemyNames)
-						sY+=10;
-					if(gGameExternalOptions.fEnemyRank)
-						sY+=10;
-					
-					iBack = RegisterBackgroundRect(BGND_FLAG_SINGLE, NULL, sX, sY, (INT16)(sX + 11 ), (INT16)(sY + 14 ) );
-					if ( iBack != -1 )
-						SetBackgroundRectFilled( iBack );
-					
-					DrawRankIcon( pSoldier->stats.bExpLevel, sX, sY );
-				}
-			}
 			// Flugente: soldier profiles
 			else if ( pSoldier->bTeam == MILITIA_TEAM && gGameExternalOptions.fSoldierProfiles_Militia && pSoldier->usSoldierProfile )
 			{
@@ -2559,6 +2428,9 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 					gprintfdirty( sX, sY, NameStr );
 					mprintf( sX, sY, NameStr );
 				}
+				// sevenfm: show weapon name and additional info
+				FindFontCenterCoordinates( sXPos, (INT16)( sYPos ), (INT16)(80 ), 1, L"", TINYFONT1, &sX, &sY );
+				ShowEnemyWeapon( sX, sY, pSoldier );
 			}
 		}
 	}
@@ -6383,12 +6255,15 @@ void GetEnemyInfoString( SOLDIERTYPE* pSelectedSoldier, SOLDIERTYPE* pTargetSold
 				{
 				case AIM_SHOT_HEAD:
 					swprintf( NameStr, L"%s", gzTooltipStrings[STR_TT_HELMET] );
+					//swprintf( NameStr, L"%s", L"Helmet" );
 					break;
 				case AIM_SHOT_TORSO:
 					swprintf( NameStr, L"%s", gzTooltipStrings[STR_TT_VEST] );
+					//swprintf( NameStr, L"%s", L"Vest" );
 					break;
 				case AIM_SHOT_LEGS:
 					swprintf( NameStr, L"%s", gzTooltipStrings[STR_TT_LEGGINGS] );
+					//swprintf( NameStr, L"%s", L"Leggings" );
 					break;
 				}								
 			}
@@ -6491,3 +6366,160 @@ void GetEnemyInfoString( SOLDIERTYPE* pSelectedSoldier, SOLDIERTYPE* pTargetSold
 		}
 	}
 }
+
+void ShowEnemyWeapon( INT16 sX, INT16 sY, SOLDIERTYPE* pTargetSoldier )
+{
+	SOLDIERTYPE *pSelectedSoldier;
+	BOOLEAN		showExactInfo = FALSE;
+	CHAR16		NameStr[ MAX_ENEMY_NAMES_CHARS ];
+	UINT16 usTotalWidth;
+	INT32 iRange;
+	INT32 iVisibleDistance;
+
+	if ( gusSelectedSoldier != NOBODY )
+		pSelectedSoldier = MercPtrs[ gusSelectedSoldier ];
+	else
+		return;
+
+	if( gGameExternalOptions.fEnemyRank || gGameExternalOptions.fEnemyNames )
+		return;
+
+	iRange = GetRangeInCellCoordsFromGridNoDiff( pSelectedSoldier->sGridNo, pTargetSoldier->sGridNo ) / 10;
+	iVisibleDistance = (INT32)( pSelectedSoldier->GetMaxDistanceVisible( pTargetSoldier->sGridNo, 0, CALC_FROM_WANTED_DIR) ) ;
+
+	if( iRange > iVisibleDistance )
+		return;
+
+	if( !pTargetSoldier->bVisible )
+		return;
+
+	// calc max range for exact info
+	if ( gusSelectedSoldier != NOBODY )
+		showExactInfo = ShowExactInfo( pSelectedSoldier, pTargetSoldier );
+
+	// show weapon/armour/items info
+	if ( gGameExternalOptions.fShowEnemyWeapon && gTacticalStatus.ubCurrentTeam == OUR_TEAM && pTargetSoldier->ubBodyType <= REGFEMALE )
+	{
+		SetFont( TINYFONT1 );
+		SetFontBackground( FONT_MCOLOR_BLACK );		
+
+		swprintf( NameStr, L"" );
+		GetEnemyInfoString( pSelectedSoldier, pTargetSoldier, showExactInfo, NameStr );
+		usTotalWidth = StringPixLength ( NameStr, TINYFONT1 );
+		sX -= usTotalWidth/2;
+		
+		// print item name
+		gprintfdirty( sX, sY + 10, NameStr );
+		mprintf( sX, sY + 10, NameStr );
+	}
+}
+
+void ShowAdditionalInfo( INT16 sX, INT16 sY, SOLDIERTYPE* pTargetSoldier )
+{
+	BOOLEAN		showExactInfo;
+	CHAR16		NameStr[ MAX_ENEMY_NAMES_CHARS ];
+	SOLDIERTYPE *pSelectedSoldier;
+
+	if ( gusSelectedSoldier != NOBODY )
+		pSelectedSoldier = MercPtrs[ gusSelectedSoldier ];
+	else
+		return;
+
+	if( gGameExternalOptions.fEnemyRank || gGameExternalOptions.fEnemyNames )
+		return;	
+
+	// calc max range for exact info
+	if ( gusSelectedSoldier != NOBODY )
+		showExactInfo = ShowExactInfo( pSelectedSoldier, pTargetSoldier );
+
+	sX -= StringPixLength ( L"*", TINYFONT1 );
+	if( gGameExternalOptions.fShowEnemyAwareness && gTacticalStatus.ubCurrentTeam == OUR_TEAM )
+	{
+		SetFont( TINYFONT1 );
+		SetFontBackground( FONT_MCOLOR_BLACK );
+		// show awareness sign only when in stealth mode or disguised
+		if( ( gusSelectedSoldier != NOBODY ) &&
+			( MercPtrs[ gusSelectedSoldier ]->bStealthMode || MercPtrs[ gusSelectedSoldier ]->bSoldierFlagMask & ( SOLDIER_COVERT_CIV | SOLDIER_COVERT_SOLDIER ) ) )
+		{
+			if( pTargetSoldier->aiData.bOppList[ MercPtrs[ gusSelectedSoldier ]->ubID ] == SEEN_CURRENTLY )
+				swprintf( NameStr, L"%s", L"*" );
+			else
+				swprintf( NameStr, L"%s", L"-" );
+
+			SetFontForeground( FONT_GRAY1 );
+			switch ( pTargetSoldier->aiData.bAlertStatus )
+			{
+			case STATUS_GREEN:							// everything's OK, no suspicion
+				SetFontForeground( FONT_GREEN );
+				break;
+			case STATUS_YELLOW:							// he or his friend heard something
+				SetFontForeground( FONT_YELLOW );
+				break;
+			case STATUS_RED:                            // has definite evidence of opponent
+				SetFontForeground( FONT_ORANGE );
+				break;
+			case STATUS_BLACK:							// currently sees an active opponent
+				SetFontForeground( FONT_DKRED );
+				break;
+			}
+
+			if ( showExactInfo )
+			{
+				// this feature is a part of 'show enemy health bar'
+				if( gGameExternalOptions.ubShowEnemyHealth > 1 )
+				{
+					gprintfdirty( sX - 15, sY, NameStr );
+					mprintf( sX - 15, sY, NameStr );	
+				}
+			}
+		}
+	}
+}
+
+void ShowEnemyHealthBar( INT16 sX, INT16 sY, SOLDIERTYPE* pSoldier )
+{
+	INT32	iBack;
+	UINT8 ubLines = gGameExternalOptions.ubShowEnemyHealth - 1;
+	INT32 iBarWidth = 24;
+	INT32 iBarHeight;
+
+	// show enemy health bar
+	if( gGameExternalOptions.ubShowEnemyHealth > 1 && gTacticalStatus.ubCurrentTeam == OUR_TEAM )
+	{
+		iBarHeight = 2 + 3 * ubLines - 1;
+		sY += 10;
+		sY -= iBarHeight;
+		sX -= iBarWidth / 2;
+
+		iBack = RegisterBackgroundRect(BGND_FLAG_SINGLE, NULL, sX, sY, (INT16)(sX + iBarWidth), (INT16)(sY + iBarHeight ) );
+		if ( iBack != -1 )
+			SetBackgroundRectFilled( iBack );
+
+		DrawEnemyHealthBar( pSoldier, sX, sY, ubLines, iBarWidth - 2, iBarHeight );
+	}
+}
+
+void ShowRankIcon( INT16 sXPos, INT16 sYPos, SOLDIERTYPE* pSoldier )
+{
+	INT32	iBack;
+	INT16 sX, sY;
+
+	if( gGameExternalOptions.ubShowEnemyRankIcon && gTacticalStatus.ubCurrentTeam == OUR_TEAM )
+		//&& (!gGameExternalOptions.fEnemyNames) && (!gGameExternalOptions.fEnemyRank))
+	{
+		sX = sXPos + 50;
+		sY = sYPos + 17;
+		if(gGameExternalOptions.fEnemyNames)
+			sY+=10;
+		if(gGameExternalOptions.fEnemyRank)
+			sY+=10;
+
+		iBack = RegisterBackgroundRect(BGND_FLAG_SINGLE, NULL, sX, sY, (INT16)(sX + 11 ), (INT16)(sY + 14 ) );
+		if ( iBack != -1 )
+			SetBackgroundRectFilled( iBack );
+
+		DrawRankIcon( pSoldier->stats.bExpLevel, sX, sY );
+	}
+}
+
+
