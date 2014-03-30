@@ -6163,10 +6163,11 @@ STR16 gzLaptopHelpText[] =
 	L"",
 	L"Encyclopédie",
 	L"Salle de briefing",
+	L"Comptes rendus",
 };
 
 
-STR16	gzHelpScreenText[] =
+STR16 gzHelpScreenText[] =
 {
 	L"Quitter l'écran d'aide",	
 };
