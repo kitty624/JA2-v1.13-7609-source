@@ -1781,7 +1781,7 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 					SetBackgroundRectFilled( iBack );
 				}
 
-				if ( ( !pSoldier->aiData.bNeutral && ( pSoldier->bSide != gbPlayerNum ) ) )
+				if ( !pSoldier->aiData.bNeutral && ( pSoldier->bSide != gbPlayerNum ) )
 				{
 					BltVideoObjectFromIndex(	FRAME_BUFFER, guiRADIO2, pSoldier->sLocatorFrame, sXPos, sYPos, VO_BLT_SRCTRANSPARENCY, NULL );
 				}
@@ -1891,7 +1891,10 @@ void DrawSelectedUIAboveGuy( UINT16 usSoldierID )
 	BOOLEAN bInCombat = gTacticalStatus.uiFlags & TURNBASED && gTacticalStatus.uiFlags & INCOMBAT;
 	BOOLEAN bStealth = pSoldier->bStealthMode || pSoldier->bSoldierFlagMask & ( SOLDIER_COVERT_CIV | SOLDIER_COVERT_SOLDIER );
 	// sevenfm: for mercs use name color as cover indicator
-	if( pSoldier->bTeam == OUR_TEAM && ! ( pSoldier->flags.uiStatusFlags & ( SOLDIER_VEHICLE | SOLDIER_ROBOT) ) &&
+	// only use color when there is enemy in sector
+	if( pSoldier->bTeam == OUR_TEAM &&
+		(NumEnemyInSector() != 0) &&
+		! ( pSoldier->flags.uiStatusFlags & ( SOLDIER_VEHICLE | SOLDIER_ROBOT) ) &&
 		( ( gGameExternalOptions.ubShowCoverIndicator == 1 && ( bInCombat || bStealth ) ) ||
 		( gGameExternalOptions.ubShowCoverIndicator == 2 && bStealth ) ) )
 	{
@@ -3860,8 +3863,8 @@ void PopupDoorOpenMenu( BOOLEAN fClosingDoor )
 	INT32								iMenuAnchorX, iMenuAnchorY;
 	CHAR16								zDisp[ 100 ];
 
-	iMenuAnchorX = gOpenDoorMenu.sX;
-	iMenuAnchorY = gOpenDoorMenu.sY;
+	//iMenuAnchorX = gOpenDoorMenu.sX;
+	//iMenuAnchorY = gOpenDoorMenu.sY;
 
 	// Blit background!
 	//BltVideoObjectFromIndex( FRAME_BUFFER, guiBUTTONBORDER, 0, iMenuAnchorX, iMenuAnchorY, VO_BLT_SRCTRANSPARENCY, NULL );
@@ -6285,9 +6288,9 @@ void GetEnemyInfoString( SOLDIERTYPE* pSelectedSoldier, SOLDIERTYPE* pTargetSold
 				else
 				{	// show general name
 					if( Item[pTargetSoldier->inv[HEAD1POS].usItem].gasmask )
-						wcscat( NameStr, L"Mask" );
+						wcscat( NameStr, TacticalStr[ GENERAL_INFO_MASK ] );
 					else if( Item[pTargetSoldier->inv[HEAD1POS].usItem].nightvisionrangebonus || Item[pTargetSoldier->inv[HEAD1POS].usItem].cavevisionrangebonus )
-						wcscat( NameStr, L"NVG" );
+						wcscat( NameStr, TacticalStr[ GENERAL_INFO_NVG ] );
 				}				
 			}
 			if( pTargetSoldier->inv[HEAD2POS].exists() )
@@ -6301,9 +6304,9 @@ void GetEnemyInfoString( SOLDIERTYPE* pSelectedSoldier, SOLDIERTYPE* pTargetSold
 				else
 				{	// show general name
 					if( Item[pTargetSoldier->inv[HEAD1POS].usItem].gasmask )
-						wcscat( NameStr, L"Mask" );
+						wcscat( NameStr, TacticalStr[ GENERAL_INFO_MASK ] );
 					else if( Item[pTargetSoldier->inv[HEAD1POS].usItem].nightvisionrangebonus || Item[pTargetSoldier->inv[HEAD1POS].usItem].cavevisionrangebonus )
-						wcscat( NameStr, L"NVG" );
+						wcscat( NameStr, TacticalStr[ GENERAL_INFO_NVG ] );
 				}
 			}
 		}
@@ -6315,7 +6318,7 @@ void GetEnemyInfoString( SOLDIERTYPE* pSelectedSoldier, SOLDIERTYPE* pTargetSold
 			{
 				if ( showExactInfo )
 				{
-					swprintf( NameStr, L"%s", ItemNames[ pTargetSoldier->inv[ HANDPOS ].usItem ] );
+					swprintf( NameStr, L"%s", ShortItemNames[ pTargetSoldier->inv[ HANDPOS ].usItem ] );
 				}
 				else
 				{
@@ -6358,7 +6361,7 @@ void GetEnemyInfoString( SOLDIERTYPE* pSelectedSoldier, SOLDIERTYPE* pTargetSold
 				else
 				{
 					if( pTargetSoldier->inv[ HANDPOS ].usItem )
-						swprintf( NameStr, L"%s", L"Item" );
+						swprintf( NameStr, L"%s", TacticalStr[ GENERAL_INFO_ITEM ] );
 					else
 						swprintf( NameStr, L"%s", L"" );
 				}								
@@ -6439,6 +6442,7 @@ void ShowAdditionalInfo( INT16 sX, INT16 sY, SOLDIERTYPE* pTargetSoldier )
 		SetFontBackground( FONT_MCOLOR_BLACK );
 		// show awareness sign only when in stealth mode or disguised
 		if( ( gusSelectedSoldier != NOBODY ) &&
+			( pTargetSoldier->bTeam == ENEMY_TEAM || pTargetSoldier->bTeam == CIV_TEAM && !pTargetSoldier->aiData.bNeutral ) &&
 			( MercPtrs[ gusSelectedSoldier ]->bStealthMode || MercPtrs[ gusSelectedSoldier ]->bSoldierFlagMask & ( SOLDIER_COVERT_CIV | SOLDIER_COVERT_SOLDIER ) ) )
 		{
 			if( pTargetSoldier->aiData.bOppList[ MercPtrs[ gusSelectedSoldier ]->ubID ] == SEEN_CURRENTLY )
@@ -6482,6 +6486,15 @@ void ShowEnemyHealthBar( INT16 sX, INT16 sY, SOLDIERTYPE* pSoldier )
 	UINT8 ubLines = gGameExternalOptions.ubShowEnemyHealth - 1;
 	INT32 iBarWidth = 24;
 	INT32 iBarHeight;
+	SOLDIERTYPE *pSelectedSoldier;
+
+	if ( gusSelectedSoldier != NOBODY )
+		pSelectedSoldier = MercPtrs[ gusSelectedSoldier ];
+	else
+		return;
+	
+	if ( pSelectedSoldier->aiData.bOppList[pSoldier->ubID] != SEEN_CURRENTLY )
+		return;
 
 	// show enemy health bar
 	if( gGameExternalOptions.ubShowEnemyHealth > 1 && gTacticalStatus.ubCurrentTeam == OUR_TEAM )
@@ -6503,6 +6516,15 @@ void ShowRankIcon( INT16 sXPos, INT16 sYPos, SOLDIERTYPE* pSoldier )
 {
 	INT32	iBack;
 	INT16 sX, sY;
+	SOLDIERTYPE *pSelectedSoldier;
+
+	if ( gusSelectedSoldier != NOBODY )
+		pSelectedSoldier = MercPtrs[ gusSelectedSoldier ];
+	else
+		return;
+	
+	if ( pSelectedSoldier->aiData.bOppList[pSoldier->ubID] != SEEN_CURRENTLY )
+		return;
 
 	if( gGameExternalOptions.ubShowEnemyRankIcon && gTacticalStatus.ubCurrentTeam == OUR_TEAM )
 		//&& (!gGameExternalOptions.fEnemyNames) && (!gGameExternalOptions.fEnemyRank))
