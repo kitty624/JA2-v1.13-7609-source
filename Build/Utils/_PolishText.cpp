@@ -1866,6 +1866,12 @@ STR16 pAssignmentStrings[] =
 	L"Jeniec", // Prisoner of war - captured
 	L"Szpital", // patient in a hospital 
 	L"Pusty",	// Vehicle is empty
+	L"Snitch",	// facility: undercover prisoner (snitch)		// TODO.Translate
+	L"Propag.",	// facility: spread propaganda
+	L"Propag.",	// facility: spread propaganda (globally)
+	L"Rumours",	// facility: gather information
+	L"Propag.",	// spread propaganda
+	L"Rumours",	// gather information
 };
 
 
@@ -7202,6 +7208,11 @@ STR16 gzFacilityAssignmentStrings[]=
 	L"Instruktor um. dowodzenia",
 	L"Instruktor zn. mat. wybuchowych",
 	L"Interrogate Prisoners",	// added by Flugente	TODO.Translate
+	L"Undercover Snitch",		// TODO.Translate
+	// 36-40
+	L"Spread Propaganda",
+	L"Spread Propaganda",	// spread propaganda (globally)
+	L"Gather Rumours",
 };
 
 STR16 Additional113Text[]=
@@ -8374,7 +8385,7 @@ STR16	szCampaignHistoryDetail[]=
 	L"In a serious escalation of the conflict, both sides deployed tanks.",
 	L"%d tanks were used by %s, %d of them were destroyed in the fierce fighting.",
 	L"Both sides are said to have used snipers.",
-	L"Unverified reports indicate %s snipers were involved in the firefight."
+	L"Unverified reports indicate %s snipers were involved in the firefight.",
 	L"This sector is of huge strategic importance, as it houses one of the handful of anti-air missile batteries the %s army posesses. Aerial photographs show extensive damage to the command center. This will leave the airspace above %s undefended for the time being.",
 	L"The situation on the ground has gotten even more confusing, as it seems rebel infighting has reached a new level. We now have confirmation that rebel militia engaed in active combat with foreign mercenaries.",
 	L"The royalists position seems more precarious than previously thought. Reports of a split surfaced, with amry personnel opening fire on each other.",
