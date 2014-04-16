@@ -1360,7 +1360,7 @@ STR16 pRenderSectorInformationText[] =
 	L"GrilleSortie :  3 -- 1) Qté : %d, 2) Qté : %d, 3) Qté : %d, 4) Qté : %d",
 	L"Car. relative ennemi :  %d mauvais, %d faible, %d norm, %d bon, %d super (%+d en tout)", //40
 	L"Équipement relatif ennemi :  %d mauvais, %d faible, %d norm, %d bon, %d super (%+d en tout)",
-	L"%d placements ont des ordres de patrouille, sans aucun waypoint défini.",//!!! Context ? -> These are just a validation messages from the map editor. You can just simple translate it
+	L"%d placements ont des ordres de patrouille, sans aucun waypoint défini.",
 	L"%d placements ont des waypoints, mais sans aucun ordres de patrouille.",
 	L"%d Numéro de grille ont un numéro de pièce étrange. Validez svp.",
 	
@@ -1948,20 +1948,20 @@ STR16 pPersonnelAssignmentStrings[] =
 	L"Élève",
 	L"Déplace les objets",	// move items
 	L"Renseignement",	//!!! Idem ? -> The current translation is OK
-	L"Mange",		// eating at a facility (cantina etc.)
+	L"Mange",	 // eating at a facility (cantina etc.)
 	L"Repos",
-	L"Interroge prisonier(s)",		// Flugente: interrogate prisoners
+	L"Interroge prisonier(s)",	 // Flugente: interrogate prisoners
 	L"Mort(e)",
 	L"Invalide",
 	L"Capturé(e)",
 	L"Hôpital", 
 	L"Vide",	// Vehicle is empty
-	L"Infiltré",	// facility: undercover prisoner (snitch)  // TODO.Translate //A voir fini (to see finished)
-	L"Répand une propagande",   // facility: spread propaganda  // TODO.Translate //A voir fini (to see finished)
-	L"Fait de la propagande",   // facility: spread propaganda (globally)  // TODO.Translate //A voir fini (to see finished)
-	L"Collecte les rumeurs",			// facility: gather rumours	  // TODO.Translate //A voir fini (to see finished)
-	L"Propagande",	     // spread propaganda  // TODO.Translate //A voir fini (to see finished)
-	L"Rumeur",			// gather information  // TODO.Translate //A voir fini (to see finished)
+	L"Infiltré",	// facility: undercover prisoner (snitch) // TODO.Translate //A voir fini (to see finished)
+	L"Répand une propagande", // facility: spread propaganda // TODO.Translate //A voir fini (to see finished)
+	L"Fait de la propagande", // facility: spread propaganda (globally) // TODO.Translate //A voir fini (to see finished)
+	L"Collecte les rumeurs",	 // facility: gather rumours	 // TODO.Translate //A voir fini (to see finished)
+	L"Propagande",	 // spread propaganda // TODO.Translate //A voir fini (to see finished)
+	L"Rumeur",	 // gather information // TODO.Translate //A voir fini (to see finished) 
 };
 
 
@@ -2004,18 +2004,18 @@ STR16 pLongAssignmentStrings[] =
 	L"Déplacer les objets",	// move items
 	L"Renseignement",	//!!! Idem ? -> Current translation is OK
 	L"Repos",
-	L"Interroger captif(s)",		// Flugente: interrogate prisoners
+	L"Interroger captif(s)",	 // Flugente: interrogate prisoners
 	L"Mort(e)",
 	L"Invalide",
 	L"Capturé(e)",
 	L"Hôpital", // patient in a hospital 
 	L"Vide",	// Vehicle is empty
-	L"Infiltré", 	// facility: undercover prisoner (snitch)  // TODO.Translate //A voir fini (to see finished)
-	L"Répandre une propagande", 	// facility: spread propaganda  // TODO.Translate //A voir fini (to see finished)
-	L"Faire de la propagande",  	// facility: spread propaganda (globally)   // TODO.Translate //A voir fini (to see finished)
-	L"Récolter les rumeurs",			// facility: gather rumours   // TODO.Translate //A voir fini (to see finished)
-	L"Propagande",  	// spread propaganda
-	L"Rumeurs", 		// gather information
+	L"Infiltré", // facility: undercover prisoner (snitch) // TODO.Translate //A voir fini (to see finished)
+	L"Répandre une propagande", // facility: spread propaganda // TODO.Translate //A voir fini (to see finished)
+	L"Faire de la propagande", // facility: spread propaganda (globally) // TODO.Translate //A voir fini (to see finished)
+	L"Récolter les rumeurs",	 // facility: gather rumours // TODO.Translate //A voir fini (to see finished)
+	L"Propagande", // spread propaganda
+	L"Rumeurs", // gather information 
 };
 
 
@@ -5793,7 +5793,7 @@ STR16	gzGIOScreenText[] =
 	
 	L"Nouv. syst. chance de toucher",
 	L"Syst. amélioré d'interruption",
-	L"Surchauffe de l'arme",
+	L"Passif des mercenaires",
 	L"Système alimentaire",
 	L"Stock de Bobby Ray",
 };
@@ -6195,7 +6195,7 @@ STR16 gzLaptopHelpText[] =
 };
 
 
-STR16	gzHelpScreenText[] =
+STR16 gzHelpScreenText[] =
 {
 	L"Quitter l'écran d'aide",	
 };
@@ -6631,6 +6631,26 @@ STR16 New113Message[] =
 	L"PA insuffisant ! Coût %d et vous avez %d.",
 	L"Astuce : %s",
 	L"Moral du joueur : %d - Moral de l'ennemi : %6.0f",		// Surrender values to be printed, if DISPLAY_SURRENDER_VALUES = TRUE
+
+	L"Cannot use skill!",				// TODO.Translate
+	L"Cannot build while enemies are in this sector!",
+	L"Cannot spot that location!",
+	L"Incorrect GridNo for firing artillery!",
+	L"Radio frequencies are jammed. No communication possible!",
+	L"Radio action failed!",
+	L"Not enough mortar shells in sector to start a barrage!",
+	L"No signal shell item found in Items.xml!",
+	L"No mortars found, cannot commence barrage!",
+	L"Already jamming signal, no need to do so again!",
+	L"Already listening for nearby sounds, no need to do so again!",
+	L"Already trying to spot, no need to do so again!",
+	L"Already scanning for jam signals, no need to do so again!",
+	L"%s could not apply %s to %s.",
+	L"%s orders reinforcements from %s.",
+	L"%s radio set is out of energy.",
+	L"a working radio set",
+	L"a binocular",
+	L"patience",
 };
 
 STR16 New113HAMMessage[] = 
@@ -8322,7 +8342,7 @@ STR16	szCampaignHistoryWebSite[]=
 	L"International Times",
 	L"RIS (Renseignements Internationaux Spécialisés)",
 
-	L"Recueille les articles de presse d'%s",
+	L"Recueille les articles de presse sur %s",
 	L"Nous sommes une source d'information neutre. Nous collectons différents articles d'actualité venant d'%s. Nous ne jugeons pas ces sources, nous nous contentons de les publier, pour que vous puissiez vous faire votre avis. Nous faisons paraitre des articles de différentes sources, venant :",
 	
 	L"Bilan du conflit",
