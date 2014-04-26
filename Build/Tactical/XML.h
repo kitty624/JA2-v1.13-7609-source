@@ -245,9 +245,6 @@ typedef PARSE_STAGE;
 #define TAUNTSFILENAMEBEGINNING					"EnemyTaunts"		// You can add additional taunt files next to the "EnemyTaunts.xml" file. They have to start with "EnemyTaunts*.xml" (e.g: EnemyTauntsKill.xml)
 #define TAUNTSFILENAMEENDING					".xml"
 
-#define LOCKSFILENAME							"Items\\Locks.xml"
-#define KEYSFILENAME							"Items\\Keys.xml"
-
 #define ENEMY_ADMIN_PROFILE_FILENAME			"Profiles\\SoldierProfileEnemyAdmin.xml"
 #define ENEMY_REGULAR_PROFILE_FILENAME			"Profiles\\SoldierProfileEnemyRegular.xml"
 #define ENEMY_ELITE_PROFILE_FILENAME			"Profiles\\SoldierProfileEnemyElite.xml"
@@ -493,13 +490,6 @@ extern BOOLEAN WriteCampaignStatsEvents( STR fileName);
 // anv: externalised taunts
 extern BOOLEAN ReadInTaunts(STR fileName, BOOLEAN localizedVersion );
 extern BOOLEAN WriteTaunts( STR fileName );
-
-// anv: externalised locks and keys
-extern BOOLEAN ReadInLocks(STR fileName, BOOLEAN localizedVersion );
-extern BOOLEAN WriteLocks( STR fileName );
-
-extern BOOLEAN ReadInKeys( STR fileName );
-extern BOOLEAN WriteKeys( STR fileName );
 
 //Enabled\Disabled profile sound by Jazz
 extern BOOLEAN ReadInSoundProfile( STR fileName );

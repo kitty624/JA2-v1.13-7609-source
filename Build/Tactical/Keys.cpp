@@ -41,7 +41,6 @@
 	#include "GameSettings.h" // added by SANDRO
 #endif
 
-#include "GameVersion.h"
 
 DOOR_STATUS		*gpDoorStatus = NULL;
 UINT8					gubNumDoorStatus=0;
@@ -138,7 +137,7 @@ BOOLEAN LoadLockTable( void )
 		return(FALSE);
 	}
 
-	uiBytesToRead = sizeof( LOCK ) * NUM_LOCKS_OLD;
+	uiBytesToRead = sizeof( LOCK ) * NUM_LOCKS;
 	FileRead( hFile, LockTable, uiBytesToRead, &uiNumBytesRead );
 
 	FileClose( hFile );
@@ -2041,27 +2040,16 @@ BOOLEAN SaveKeyTableToSaveGameFile( HWFILE hFile )
 	return( TRUE );
 }
 
-BOOLEAN LoadKeyTableFromSaveedGameFile( HWFILE hFile, UINT32 uiSaveGameVersion )
+BOOLEAN LoadKeyTableFromSaveedGameFile( HWFILE hFile )
 {
 	UINT32	uiNumBytesRead=0;
 
-	if( uiSaveGameVersion < MORE_LOCKS_AND_KEYS )
+
+	// Load the KeyTable
+	FileRead( hFile, KeyTable, sizeof( KEY ) * NUM_KEYS, &uiNumBytesRead );
+	if( uiNumBytesRead != sizeof( KEY ) * NUM_KEYS )
 	{
-		// Load the KeyTable
-		FileRead( hFile, KeyTable, sizeof( KEY ) * NUM_KEYS_OLD, &uiNumBytesRead );
-		if( uiNumBytesRead != sizeof( KEY ) * NUM_KEYS_OLD )
-		{
-			return( FALSE );
-		}
-	}
-	else
-	{
-		// Load the KeyTable
-		FileRead( hFile, KeyTable, sizeof( KEY ) * NUM_KEYS, &uiNumBytesRead );
-		if( uiNumBytesRead != sizeof( KEY ) * NUM_KEYS )
-		{
-			return( FALSE );
-		}
+		return( FALSE );
 	}
 
 	return( TRUE );

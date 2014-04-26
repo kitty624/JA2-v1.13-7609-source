@@ -5006,7 +5006,7 @@ BOOLEAN LoadSavedGame( int ubSavedGameID )
 
 
 
-	if( !LoadKeyTableFromSaveedGameFile( hFile, guiCurrentSaveGameVersion ) )
+	if( !LoadKeyTableFromSaveedGameFile( hFile ) )
 	{
 		DebugMsg( TOPIC_JA2, DBG_LEVEL_3, String("LoadKeyTableFromSaveedGameFile failed" ) );
 		FileClose( hFile );
@@ -6541,21 +6541,10 @@ BOOLEAN LoadSoldierStructure( HWFILE hFile )
 			{
 				// WANNE - BMP: Check -> We get an assert here!
 				// Now Load the ....
-				if( guiCurrentSaveGameVersion < MORE_LOCKS_AND_KEYS )
+				FileRead( hFile, Menptr[ cnt ].pKeyRing, NUM_KEYS * sizeof( KEY_ON_RING ), &uiNumBytesRead );
+				if( uiNumBytesRead != NUM_KEYS * sizeof( KEY_ON_RING ) )
 				{
-					FileRead( hFile, Menptr[ cnt ].pKeyRing, NUM_KEYS_OLD * sizeof( KEY_ON_RING ), &uiNumBytesRead );
-					if( uiNumBytesRead != NUM_KEYS_OLD * sizeof( KEY_ON_RING ) )
-					{
-						return(FALSE);
-					}
-				}
-				else
-				{
-					FileRead( hFile, Menptr[ cnt ].pKeyRing, NUM_KEYS * sizeof( KEY_ON_RING ), &uiNumBytesRead );
-					if( uiNumBytesRead != NUM_KEYS * sizeof( KEY_ON_RING ) )
-					{
-						return(FALSE);
-					}
+					return(FALSE);
 				}
 
 			}

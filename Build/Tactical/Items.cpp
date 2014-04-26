@@ -7270,8 +7270,7 @@ BOOLEAN CreateKeyObject( OBJECTTYPE * pObj , UINT8 ubNumberOfKeys, UINT8 ubKeyID
 	BOOLEAN fRet;
 
 	pObj->initialize();
-	//fRet = CreateItems( (UINT16) (FIRST_KEY + LockTable[ ubKeyID ].usKeyItem), 100, ubNumberOfKeys, pObj );
-	fRet = CreateItems( (UINT16) (KeyTable[LockTable[ ubKeyID ].usKeyItem].usItem), 100, ubNumberOfKeys, pObj );
+	fRet = CreateItems( (UINT16) (FIRST_KEY + LockTable[ ubKeyID ].usKeyItem), 100, ubNumberOfKeys, pObj );
 	if (fRet)
 	{
 		(*pObj)[0]->data.key.ubKeyID = ubKeyID;
