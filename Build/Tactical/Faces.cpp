@@ -2415,7 +2415,7 @@ void HandleRenderFaceAdjustments( FACETYPE *pFace, BOOLEAN fDisplayBuffer, BOOLE
 				BltVideoObjectFromIndex( uiRenderBuffer, guiPORTRAITICONS, sIconIndex, sIconX, sIconY, VO_BLT_SRCTRANSPARENCY, NULL );
 
 				fDoIcon = FALSE;
-				bNumRightIcons++;
+				++bNumRightIcons;
 			}
 		}
 	}

@@ -5239,9 +5239,10 @@ BOOLEAN AssignTraitsToSoldier( SOLDIERTYPE *pSoldier, SOLDIERCREATE_STRUCT *pCre
 			}
 		}
 	}
+
 	// RETURN TRUE IF ALL TRAITS ASSIGNED OTHERWISE FALSE
 	if (( !gGameOptions.fNewTraitSystem && ATraitAssigned && BTraitAssigned ) || ( gGameOptions.fNewTraitSystem && ATraitAssigned && BTraitAssigned && CTraitAssigned ) ) 
 		return( TRUE );
-	else
-		return( FALSE );
+	
+	return( FALSE );
 }
