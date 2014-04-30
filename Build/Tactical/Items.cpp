@@ -9507,7 +9507,7 @@ BOOLEAN ApplyClothes( SOLDIERTYPE * pSoldier, OBJECTTYPE * pObj, BOOLEAN fUseAPs
 			if ( newvest )
 			{
 				// if we are already wearing a vest, give us back that item
-				if ( pSoldier->bSoldierFlagMask & SOLDIER_NEW_VEST )
+				if ( pSoldier->usSoldierFlagMask & SOLDIER_NEW_VEST )
 				{
 					UINT16 vestitem = 0;
 					if ( GetFirstClothesItemWithSpecificData(&vestitem, pSoldier->VestPal, "blank")  )
@@ -9521,16 +9521,16 @@ BOOLEAN ApplyClothes( SOLDIERTYPE * pSoldier, OBJECTTYPE * pObj, BOOLEAN fUseAPs
 				}
 
 				SET_PALETTEREP_ID( pSoldier->VestPal, Clothes[clothestype].vest );
-				pSoldier->bSoldierFlagMask |= SOLDIER_NEW_VEST;
+				pSoldier->usSoldierFlagMask |= SOLDIER_NEW_VEST;
 
 				// this vest is not damaged, so remove the damaged vest flag
-				pSoldier->bSoldierFlagMask &= ~SOLDIER_DAMAGED_VEST;
+				pSoldier->usSoldierFlagMask &= ~SOLDIER_DAMAGED_VEST;
 			}
 
 			if ( newpants )
 			{
 				// if we are already wearing a vest, give us back that item
-				if ( pSoldier->bSoldierFlagMask & SOLDIER_NEW_PANTS )
+				if ( pSoldier->usSoldierFlagMask & SOLDIER_NEW_PANTS )
 				{
 					UINT16 pantsitem = 0;
 					if ( GetFirstClothesItemWithSpecificData(&pantsitem, "blank", pSoldier->PantsPal)  )
@@ -9544,10 +9544,10 @@ BOOLEAN ApplyClothes( SOLDIERTYPE * pSoldier, OBJECTTYPE * pObj, BOOLEAN fUseAPs
 				}
 
 				SET_PALETTEREP_ID( pSoldier->PantsPal, Clothes[clothestype].pants );
-				pSoldier->bSoldierFlagMask |= SOLDIER_NEW_PANTS;
+				pSoldier->usSoldierFlagMask |= SOLDIER_NEW_PANTS;
 
 				// these pants are not damaged, so remove the damaged pants flag
-				pSoldier->bSoldierFlagMask &= ~SOLDIER_DAMAGED_PANTS;
+				pSoldier->usSoldierFlagMask &= ~SOLDIER_DAMAGED_PANTS;
 			}
 
 			// Use palette from HVOBJECT, then use substitution for pants, etc
@@ -9566,10 +9566,10 @@ BOOLEAN ApplyClothes( SOLDIERTYPE * pSoldier, OBJECTTYPE * pObj, BOOLEAN fUseAPs
 				DeductPoints( pSoldier, apcost, 0 );
 		}
 
-		if ( pSoldier->bSoldierFlagMask & SOLDIER_NEW_VEST && pSoldier->bSoldierFlagMask & SOLDIER_NEW_PANTS )
+		if ( pSoldier->usSoldierFlagMask & SOLDIER_NEW_VEST && pSoldier->usSoldierFlagMask & SOLDIER_NEW_PANTS )
 		{
 			// first, remove the covert flags, and then reapply the correct ones, in case we switch between civilian and military clothes
-			pSoldier->bSoldierFlagMask &= ~(SOLDIER_COVERT_CIV|SOLDIER_COVERT_SOLDIER);
+			pSoldier->usSoldierFlagMask &= ~(SOLDIER_COVERT_CIV|SOLDIER_COVERT_SOLDIER);
 
 			// we now have to determine wether we are currently wearing civilian or military clothes
 			for ( UINT8 i = UNIFORM_ENEMY_ADMIN; i <= UNIFORM_ENEMY_ELITE; ++i )
@@ -9577,7 +9577,7 @@ BOOLEAN ApplyClothes( SOLDIERTYPE * pSoldier, OBJECTTYPE * pObj, BOOLEAN fUseAPs
 				// both parts have to fit. We cant mix different uniforms and get soldier disguise
 				if ( COMPARE_PALETTEREP_ID(pSoldier->VestPal, gUniformColors[ i ].vest) && COMPARE_PALETTEREP_ID(pSoldier->PantsPal, gUniformColors[ i ].pants) )
 				{
-					pSoldier->bSoldierFlagMask |= SOLDIER_COVERT_SOLDIER;
+					pSoldier->usSoldierFlagMask |= SOLDIER_COVERT_SOLDIER;
 
 					if ( pSoldier->bTeam == OUR_TEAM )
 					ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, szCovertTextStr[STR_COVERT_DISGUISED_AS_SOLDIER], pSoldier->GetName() );
@@ -9587,9 +9587,9 @@ BOOLEAN ApplyClothes( SOLDIERTYPE * pSoldier, OBJECTTYPE * pObj, BOOLEAN fUseAPs
 			}
 
 			// if not dressed as a soldier, we must be dressed as a civilian
-			if ( !(pSoldier->bSoldierFlagMask & SOLDIER_COVERT_SOLDIER) )
+			if ( !(pSoldier->usSoldierFlagMask & SOLDIER_COVERT_SOLDIER) )
 			{
-				pSoldier->bSoldierFlagMask |= SOLDIER_COVERT_CIV;
+				pSoldier->usSoldierFlagMask |= SOLDIER_COVERT_CIV;
 
 				if ( pSoldier->bTeam == OUR_TEAM )
 				ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, szCovertTextStr[STR_COVERT_DISGUISED_AS_CIVILIAN], pSoldier->GetName() );

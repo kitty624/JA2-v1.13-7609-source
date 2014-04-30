@@ -11426,9 +11426,9 @@ void SnitchToggleMenuBtnCallback( MOUSE_REGION * pRegion, INT32 iReason )
 		}
 		else if( iValue == SNITCH_MENU_TOGGLE_ON )
 		{
-			if ( pSoldier->bSoldierFlagMask2 & SOLDIER_SNITCHING_OFF )
+			if ( pSoldier->usSoldierFlagMask2 & SOLDIER_SNITCHING_OFF )
 			{
-				pSoldier->bSoldierFlagMask2 &= ~SOLDIER_SNITCHING_OFF;
+				pSoldier->usSoldierFlagMask2 &= ~SOLDIER_SNITCHING_OFF;
 				fShowSnitchToggleMenu = FALSE;
 				fShowSnitchMenu = FALSE;
 				fShowAssignmentMenu = FALSE;
@@ -11437,9 +11437,9 @@ void SnitchToggleMenuBtnCallback( MOUSE_REGION * pRegion, INT32 iReason )
 		}
 		else if( iValue == SNITCH_MENU_TOGGLE_OFF )
 		{
-			if ( !(pSoldier->bSoldierFlagMask2 & SOLDIER_SNITCHING_OFF) )
+			if ( !(pSoldier->usSoldierFlagMask2 & SOLDIER_SNITCHING_OFF) )
 			{
-				pSoldier->bSoldierFlagMask2 |= SOLDIER_SNITCHING_OFF;
+				pSoldier->usSoldierFlagMask2 |= SOLDIER_SNITCHING_OFF;
 				fShowSnitchToggleMenu = FALSE;
 				fShowSnitchMenu = FALSE;
 				fShowAssignmentMenu = FALSE;
@@ -11449,9 +11449,9 @@ void SnitchToggleMenuBtnCallback( MOUSE_REGION * pRegion, INT32 iReason )
 		}
 		else if( iValue == SNITCH_MENU_MISBEHAVIOUR_ON )
 		{
-			if ( pSoldier->bSoldierFlagMask2 & SOLDIER_PREVENT_MISBEHAVIOUR_OFF )
+			if ( pSoldier->usSoldierFlagMask2 & SOLDIER_PREVENT_MISBEHAVIOUR_OFF )
 			{
-				pSoldier->bSoldierFlagMask2 &= ~SOLDIER_PREVENT_MISBEHAVIOUR_OFF;
+				pSoldier->usSoldierFlagMask2 &= ~SOLDIER_PREVENT_MISBEHAVIOUR_OFF;
 				fShowSnitchToggleMenu = FALSE;
 				fShowSnitchMenu = FALSE;
 				fShowAssignmentMenu = FALSE;
@@ -11460,9 +11460,9 @@ void SnitchToggleMenuBtnCallback( MOUSE_REGION * pRegion, INT32 iReason )
 		}
 		else if( iValue == SNITCH_MENU_MISBEHAVIOUR_OFF)
 		{
-			if ( !(pSoldier->bSoldierFlagMask2 & SOLDIER_PREVENT_MISBEHAVIOUR_OFF) )
+			if ( !(pSoldier->usSoldierFlagMask2 & SOLDIER_PREVENT_MISBEHAVIOUR_OFF) )
 			{
-				pSoldier->bSoldierFlagMask2 |= SOLDIER_PREVENT_MISBEHAVIOUR_OFF;
+				pSoldier->usSoldierFlagMask2 |= SOLDIER_PREVENT_MISBEHAVIOUR_OFF;
 				fShowSnitchToggleMenu = FALSE;
 				fShowSnitchMenu = FALSE;
 				fShowAssignmentMenu = FALSE;
@@ -15132,7 +15132,7 @@ void HandleShadingOfLinesForSnitchToggleMenu( void )
 
 	pSoldier = GetSelectedAssignSoldier( FALSE );
 
-	if( pSoldier->bSoldierFlagMask2 & SOLDIER_SNITCHING_OFF )
+	if( pSoldier->usSoldierFlagMask2 & SOLDIER_SNITCHING_OFF )
 	{
 		UnShadeStringInBox( ghSnitchToggleBox, SNITCH_MENU_TOGGLE_ON );
 		ShadeStringInBox( ghSnitchToggleBox, SNITCH_MENU_TOGGLE_OFF );
@@ -15143,7 +15143,7 @@ void HandleShadingOfLinesForSnitchToggleMenu( void )
 		UnShadeStringInBox( ghSnitchToggleBox, SNITCH_MENU_TOGGLE_OFF );
 	}
 
-	if( pSoldier->bSoldierFlagMask2 & SOLDIER_PREVENT_MISBEHAVIOUR_OFF )
+	if( pSoldier->usSoldierFlagMask2 & SOLDIER_PREVENT_MISBEHAVIOUR_OFF )
 	{
 		UnShadeStringInBox( ghSnitchToggleBox, SNITCH_MENU_MISBEHAVIOUR_ON );
 		ShadeStringInBox( ghSnitchToggleBox, SNITCH_MENU_MISBEHAVIOUR_OFF );

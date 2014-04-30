@@ -3718,7 +3718,7 @@ void HandleNPCTeamMemberDeath( SOLDIERTYPE *pSoldierOld )
         }
 
         // Flugente: if this was a prisoner of war, reduce their sector count by 1
-        if ( pSoldierOld->bSoldierFlagMask & SOLDIER_POW_PRISON )
+        if ( pSoldierOld->usSoldierFlagMask & SOLDIER_POW_PRISON )
 			KillOnePrisoner( &SectorInfo[ SECTOR( gWorldSectorX, gWorldSectorY ) ] );
     }
     else if ( pSoldierOld->bTeam == MILITIA_TEAM )
@@ -6669,7 +6669,7 @@ void RemoveCapturedEnemiesFromSectorInfo( INT16 sMapX, INT16 sMapY, INT8 bMapZ )
         if ( pTeamSoldier->bActive && pTeamSoldier->bInSector && pTeamSoldier->bTeam == ENEMY_TEAM )
         {
             // Only pows that are not dead yet
-            if ( ( pTeamSoldier->bSoldierFlagMask & SOLDIER_POW ) && !( pTeamSoldier->flags.uiStatusFlags & SOLDIER_DEAD ) )
+            if ( ( pTeamSoldier->usSoldierFlagMask & SOLDIER_POW ) && !( pTeamSoldier->flags.uiStatusFlags & SOLDIER_DEAD ) )
             {
                 // if we arrive here and the guy has lifepoints < OKLIFE, something is very odd... better take him prisoner and remove him anyway
                 //if ( pTeamSoldier->stats.bLife > OKLIFE && pTeamSoldier->stats.bLife != 0 )
@@ -6826,10 +6826,10 @@ void UpdateWoundedFromSectorInfo( INT16 sMapX, INT16 sMapY, INT8 bMapZ )
     for ( pSoldier = Menptr, cnt = 0; cnt < TOTAL_SOLDIERS; ++pSoldier, ++cnt )
     {
         // Kill those not already dead.,...
-        if ( pSoldier->bActive && pSoldier->bInSector && pSoldier->bSoldierFlagMask & SOLDIER_FRESHWOUND )
+        if ( pSoldier->bActive && pSoldier->bInSector && pSoldier->usSoldierFlagMask & SOLDIER_FRESHWOUND )
         {
 			// remove flag, so we are not counted again
-			pSoldier->bSoldierFlagMask &= ~SOLDIER_FRESHWOUND;
+			pSoldier->usSoldierFlagMask &= ~SOLDIER_FRESHWOUND;
 
 			// the dead count as dead, not as wounded
 			if ( pSoldier->stats.bLife <= 0 )
@@ -7773,7 +7773,7 @@ UINT8 NumCapableEnemyInSector( )
                 else
                 {
                     // Flugente: captured soldiers also do not count
-                    if ( pTeamSoldier->bSoldierFlagMask & SOLDIER_POW )
+                    if ( pTeamSoldier->usSoldierFlagMask & SOLDIER_POW )
                         continue;
 
                     // Check for any more badguys
@@ -8818,7 +8818,7 @@ BOOLEAN ProcessImplicationsOfPCAttack( SOLDIERTYPE * pSoldier, SOLDIERTYPE ** pp
         else if ( pTarget->bTeam == gbPlayerNum && !(gTacticalStatus.uiFlags & INCOMBAT) )
         {
 			// Flugente: if we are on the same team adn are currently stealing (accessing inventory) from a teammember, do NOT retaliate
-			if ( AllowedToStealFromTeamMate(pSoldier->ubID, pTarget->ubID) && pSoldier->bSoldierFlagMask & SOLDIER_ACCESSTEAMMEMBER )
+			if ( AllowedToStealFromTeamMate(pSoldier->ubID, pTarget->ubID) && pSoldier->usSoldierFlagMask & SOLDIER_ACCESSTEAMMEMBER )
 			{
 				
 			}
@@ -10230,10 +10230,10 @@ void PrisonerSurrenderMessageBoxCallBack( UINT8 ubExitValue )
             if( pSoldier->bActive && ( pSoldier->sSectorX == gWorldSectorX ) && ( pSoldier->sSectorY == gWorldSectorY ) && ( pSoldier->bSectorZ == gbWorldSectorZ) )
             {
                 // if we are disguised as a civilian, the enemy does not take us into the equation - he does not consider us
-                if ( pSoldier->bSoldierFlagMask & SOLDIER_COVERT_CIV )
+                if ( pSoldier->usSoldierFlagMask & SOLDIER_COVERT_CIV )
                     ;
                 // if we are disguised as a soldier, the enemy counts us on HIS team
-                else if ( pSoldier->bSoldierFlagMask & SOLDIER_COVERT_SOLDIER )
+                else if ( pSoldier->usSoldierFlagMask & SOLDIER_COVERT_SOLDIER )
                     enemysidestrength += pSoldier->GetSurrenderStrength();
                 else
                     // player side counts double, to put more emphasize on overwhelming the enemy with mercs and not just spamming militia
@@ -10286,7 +10286,7 @@ void PrisonerSurrenderMessageBoxCallBack( UINT8 ubExitValue )
                     // only if not dying, and if not a NPC (Mike...)
                     if( pSoldier->stats.bLife >= OKLIFE && pSoldier->ubProfile == NO_PROFILE )
                     {
-                        pSoldier->bSoldierFlagMask |= SOLDIER_POW;
+                        pSoldier->usSoldierFlagMask |= SOLDIER_POW;
 
                         // Remove as target
                         RemoveManAsTarget( pSoldier );
@@ -10299,7 +10299,7 @@ void PrisonerSurrenderMessageBoxCallBack( UINT8 ubExitValue )
             ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, szPrisonerTextStr[STR_PRISONER_REFUSE_SURRENDER] );
 
             // if asking for surrender while undercover and the enemy refuses, he learns who you are, so he uncovers you
-            if ( gusSelectedSoldier != NOBODY && MercPtrs[ gusSelectedSoldier ]->bSoldierFlagMask & (SOLDIER_COVERT_CIV|SOLDIER_COVERT_SOLDIER) )
+            if ( gusSelectedSoldier != NOBODY && MercPtrs[ gusSelectedSoldier ]->usSoldierFlagMask & (SOLDIER_COVERT_CIV|SOLDIER_COVERT_SOLDIER) )
             {
                 MercPtrs[ gusSelectedSoldier ]->LooseDisguise();
 
@@ -10454,7 +10454,7 @@ void TeamRestock(UINT8 bTeam)
 			pSoldier->inv = createstruct.Inv;
 
 			// we took new gear, so we can drop it again
-			pSoldier->bSoldierFlagMask &= ~SOLDIER_EQUIPMENT_DROPPED;
+			pSoldier->usSoldierFlagMask &= ~SOLDIER_EQUIPMENT_DROPPED;
         }
     }
 }

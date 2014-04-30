@@ -2083,7 +2083,7 @@ BOOLEAN SOLDIERTYPE::Load(HWFILE hFile)
 		numBytesRead = ReadFieldByField(hFile, &this->bExtraAgility, sizeof(bExtraAgility), sizeof(INT16), numBytesRead);
 		numBytesRead = ReadFieldByField(hFile, &this->bExtraWisdom, sizeof(bExtraWisdom), sizeof(INT16), numBytesRead);
 		numBytesRead = ReadFieldByField(hFile, &this->bExtraExpLevel, sizeof(bExtraExpLevel), sizeof(INT8), numBytesRead);
-		numBytesRead = ReadFieldByField(hFile, &this->bSoldierFlagMask, sizeof(bSoldierFlagMask), sizeof(INT32), numBytesRead);
+		numBytesRead = ReadFieldByField(hFile, &this->usSoldierFlagMask, sizeof(usSoldierFlagMask), sizeof(UINT32), numBytesRead);
 				
 		if ( guiCurrentSaveGameVersion >= FOOD_CHANGES )
 		{
@@ -2227,13 +2227,13 @@ BOOLEAN SOLDIERTYPE::Load(HWFILE hFile)
 
 		if ( guiCurrentSaveGameVersion >=  SNITCH_TRAIT_EXTENDED )
 		{
-			numBytesRead = ReadFieldByField(hFile, &this->bSoldierFlagMask2, sizeof(bSoldierFlagMask2), sizeof(INT32), numBytesRead);
+			numBytesRead = ReadFieldByField(hFile, &this->usSoldierFlagMask2, sizeof(usSoldierFlagMask2), sizeof(UINT32), numBytesRead);
 		}
 		else
 		{
-			this->bSoldierFlagMask2 = 0;
+			this->usSoldierFlagMask2 = 0;
 			
-			for(int i = 0; i < sizeof(bSoldierFlagMask2); ++i)
+			for(int i = 0; i < sizeof(usSoldierFlagMask2); ++i)
 				buffer++;			
 		}
 
