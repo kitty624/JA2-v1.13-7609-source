@@ -6277,8 +6277,9 @@ BOOLEAN LoadSavedGame( int ubSavedGameID )
 	//now change the savegame format so that temp files are saved and loaded correctly
 	guiCurrentSaveGameVersion = SAVE_GAME_VERSION;
 
+	// Flugente: should not be needed anymore
 	// WANNE: This should fix the bug if any merc are still under PC control. This could happen after boxing in SAN MONA.
-	SOLDIERTYPE	*pTeamSoldier;
+	/*SOLDIERTYPE	*pTeamSoldier;
 	for (INT8 bLoop=gTacticalStatus.Team[gbPlayerNum].bFirstID; bLoop <= gTacticalStatus.Team[gbPlayerNum].bLastID; bLoop++)
 	{
 		pTeamSoldier=MercPtrs[bLoop]; 
@@ -6286,9 +6287,8 @@ BOOLEAN LoadSavedGame( int ubSavedGameID )
 		if (pTeamSoldier->flags.uiStatusFlags & SOLDIER_PCUNDERAICONTROL)
 			pTeamSoldier->flags.uiStatusFlags &= (~SOLDIER_PCUNDERAICONTROL);
 
-		if (pTeamSoldier->flags.uiStatusFlags & SOLDIER_BOXER)
-			pTeamSoldier->flags.uiStatusFlags &= (~SOLDIER_BOXER);
-	}
+		pTeamSoldier->DeleteBoxingFlag();
+	}*/
 
 	return( TRUE );
 }
@@ -8626,7 +8626,7 @@ BOOLEAN LoadGeneralInfo( HWFILE hFile )
 	fDisableMapInterfaceDueToBattle = sGeneralInfo.fDisableMapInterfaceDueToBattle;
 
 	memcpy( &gsBoxerGridNo, &sGeneralInfo.sBoxerGridNo, NUM_BOXERS * sizeof( INT32 ) );
-	memcpy( &gubBoxerID, &sGeneralInfo.ubBoxerID, NUM_BOXERS * sizeof( INT8 ) );
+	memcpy( &gubBoxerID, &sGeneralInfo.ubBoxerID, NUM_BOXERS * sizeof( UINT8 ) );
 	memcpy( &gfBoxerFought, &sGeneralInfo.fBoxerFought, NUM_BOXERS * sizeof( BOOLEAN ) );
 
 	//Load the helicopter status

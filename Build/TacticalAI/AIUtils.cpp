@@ -3062,7 +3062,7 @@ INT32 CalcStraightThreatValue( SOLDIERTYPE *pEnemy )
 }
 
 // Flugente: get the id of the closest soldier with a specific flag that we can currently see
-UINT8 GetClosestFlaggedSoldierID( SOLDIERTYPE * pSoldier, INT16 aRange, UINT8 auTeam, UINT32 aFlag )
+UINT8 GetClosestFlaggedSoldierID( SOLDIERTYPE * pSoldier, INT16 aRange, UINT8 auTeam, UINT32 aFlag, BOOLEAN fCheckSight )
 {
 	UINT8 id = NOBODY;
 
@@ -3095,7 +3095,7 @@ UINT8 GetClosestFlaggedSoldierID( SOLDIERTYPE * pSoldier, INT16 aRange, UINT8 au
 		if (SpacesAway(pSoldier->sGridNo, pFriend->sGridNo) < range)
 		{
 			// can we see this guy?
-			if ( SoldierTo3DLocationLineOfSightTest( pSoldier, pFriend->sGridNo, pSoldier->pathing.bLevel, 3, TRUE, CALC_FROM_WANTED_DIR ) )
+			if ( !fCheckSight || SoldierTo3DLocationLineOfSightTest( pSoldier, pFriend->sGridNo, pSoldier->pathing.bLevel, 3, TRUE, CALC_FROM_WANTED_DIR ) )
 			{
 				range = SpacesAway(pSoldier->sGridNo,pFriend->sGridNo);
 				id = pFriend->ubID;

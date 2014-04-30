@@ -732,7 +732,7 @@ INT8 DecideActionGreen(SOLDIERTYPE *pSoldier)
 				{
 					if (usRoom == BOXING_RING)
 					{
-						for ( ubLoop = 0; ubLoop < NUM_BOXERS; ubLoop++ )
+						for ( ubLoop = 0; ubLoop < NUM_BOXERS; ++ubLoop )
 						{
 							if (pSoldier->ubID == gubBoxerID[ ubLoop ])
 							{
@@ -757,8 +757,7 @@ INT8 DecideActionGreen(SOLDIERTYPE *pSoldier)
 							if (pTeamSoldier->flags.uiStatusFlags & SOLDIER_PCUNDERAICONTROL)
 								pTeamSoldier->flags.uiStatusFlags &= (~SOLDIER_PCUNDERAICONTROL);
 
-							if (pTeamSoldier->flags.uiStatusFlags & SOLDIER_BOXER)
-								pTeamSoldier->flags.uiStatusFlags &= (~SOLDIER_BOXER);
+							pTeamSoldier->DeleteBoxingFlag( );
 						}
 
 						if (pSoldier->bTeam == gbPlayerNum || CountPeopleInBoxingRing() == 0)
@@ -922,7 +921,7 @@ INT8 DecideActionGreen(SOLDIERTYPE *pSoldier)
 		// Flugente: if we see one of our buddies in handcuffs, its a clear sign of enemy activity!
 		if ( gGameExternalOptions.fAllowPrisonerSystem && pSoldier->bTeam == ENEMY_TEAM && !gTacticalStatus.Team[pSoldier->bTeam].bAwareOfOpposition )
 		{
-			UINT8 ubPerson = GetClosestFlaggedSoldierID( pSoldier, 20, ENEMY_TEAM, SOLDIER_POW );
+			UINT8 ubPerson = GetClosestFlaggedSoldierID( pSoldier, 20, ENEMY_TEAM, SOLDIER_POW, TRUE );
 
 			if ( ubPerson != NOBODY )
 			{	
@@ -1532,7 +1531,7 @@ INT8 DecideActionYellow(SOLDIERTYPE *pSoldier)
 		// Flugente: if we see one of our buddies captured, it is a clear sign of enemy activity!
 		if ( gGameExternalOptions.fAllowPrisonerSystem && pSoldier->bTeam == ENEMY_TEAM )
 		{
-			UINT8 ubPerson = GetClosestFlaggedSoldierID( pSoldier, 20, ENEMY_TEAM, SOLDIER_POW );
+			UINT8 ubPerson = GetClosestFlaggedSoldierID( pSoldier, 20, ENEMY_TEAM, SOLDIER_POW, TRUE );
 
 			if ( ubPerson != NOBODY )
 			{
@@ -2819,7 +2818,7 @@ INT8 DecideActionRed(SOLDIERTYPE *pSoldier, UINT8 ubUnconsciousOK)
 		// Flugente: if we see one of our buddies captured, it is a clear sign of enemy activity!
 		if ( gGameExternalOptions.fAllowPrisonerSystem && pSoldier->bTeam == ENEMY_TEAM )
 		{
-			UINT8 ubPerson = GetClosestFlaggedSoldierID( pSoldier, 20, ENEMY_TEAM, SOLDIER_POW );
+			UINT8 ubPerson = GetClosestFlaggedSoldierID( pSoldier, 20, ENEMY_TEAM, SOLDIER_POW, TRUE );
 
 			if ( ubPerson != NOBODY )
 			{

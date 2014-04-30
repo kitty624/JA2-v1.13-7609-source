@@ -15349,7 +15349,6 @@ BOOLEAN		SOLDIERTYPE::SeemsLegit( UINT8 ubObserverID )
 		this->usAnimState == PUNCH_BREATH ||
 		this->usAnimState == KICK_DOOR ||
 		this->usAnimState == CUTTING_FENCE ||
-		this->usAnimState == THROW_KNIFE ||
 		this->usAnimState == PLANT_BOMB ||
 		this->usAnimState == USE_REMOTE ||
 		this->usAnimState == STEAL_ITEM ||
@@ -15363,7 +15362,13 @@ BOOLEAN		SOLDIERTYPE::SeemsLegit( UINT8 ubObserverID )
 		this->usAnimState == FOCUSED_STAB ||
 		this->usAnimState == HTH_KICK ||
 		this->usAnimState == FOCUSED_HTH_KICK ||
-		this->usAnimState == LONG_JUMP
+		this->usAnimState == LONG_JUMP ||
+		this->usAnimState == THROW_GRENADE_STANCE ||
+		this->usAnimState == LOB_GRENADE_STANCE ||
+		this->usAnimState == THROW_ITEM ||
+		this->usAnimState == LOB_ITEM ||
+		this->usAnimState == THROW_ITEM_CROUCHED ||
+		this->usAnimState == SHOOT_ROCKET_CROUCHED
 		)
 	{
 		ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, szCovertTextStr[STR_COVERT_ACTIVITIES], this->GetName() );
@@ -18227,6 +18232,13 @@ BOOLEAN SOLDIERTYPE::BecomeSpotter( INT32 sTargetGridNo )
 	CancelMultiTurnAction(FALSE);
 	
 	return TRUE;
+}
+
+// Flugente: boxing fix: this shall be the only location where the boxing flag gets removed (easier debugging)
+void	SOLDIERTYPE::DeleteBoxingFlag()
+{
+	if ( flags.uiStatusFlags & SOLDIER_BOXER )
+		flags.uiStatusFlags &= (~SOLDIER_BOXER);
 }
 
 

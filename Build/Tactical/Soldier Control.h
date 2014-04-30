@@ -1825,6 +1825,9 @@ public:
 	BOOLEAN CanSpot( INT32 sTargetGridNo = -1 );
 	BOOLEAN BecomeSpotter( INT32 sTargetGridNo );
 
+	// Flugente: boxing fix: this shall be the only location where the boxing flag gets removed (easier debugging)
+	void	DeleteBoxingFlag();
+
 	//////////////////////////////////////////////////////////////////////////////
 
 }; // SOLDIERTYPE;	
