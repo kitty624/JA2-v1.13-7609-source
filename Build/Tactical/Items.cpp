@@ -12193,8 +12193,8 @@ UINT16 PickARandomLaunchable(UINT16 itemIndex)
 {
 	UINT16 usNumMatches = 0;
 	UINT16 usRandom = 0;
-	UINT16 i = 0;
 	UINT16 lowestCoolness = LowestLaunchableCoolness(itemIndex);
+#if 0
 	//DebugMsg (TOPIC_JA2,DBG_LEVEL_3,String("PickARandomLaunchable: itemIndex = %d", itemIndex));
 
 	// WANNE: This should fix the hang on the merc positioning screen (fix by Razer)
@@ -12228,6 +12228,36 @@ UINT16 PickARandomLaunchable(UINT16 itemIndex)
 				}
 			}
 		}
+	}
+#endif
+
+	// Flugente: the above code is highly dubious.. why do we loop over all items 2 times, and why that obscure usRandom--; business? This can cause an underflow!
+	BOOLEAN isnight = NightTime();
+	UINT16 maxcoolness = max( HighestPlayerProgressPercentage() / 10, lowestCoolness );
+
+	std::vector<UINT16> legalvec;
+	for ( UINT16 i = 0; i < MAXITEMS; ++i )
+	{
+		if ( Item[i].usItemClass == 0 )
+			break;
+
+		//Madd: quickfix: make it not choose best grenades right away.
+		if ( Item[i].ubCoolness <= maxcoolness && ItemIsLegal( i ) && ValidLaunchable( i, itemIndex ) )
+		{
+			// Flugente: ignore this item if we aren't allowed to pick it at this time of day
+			if ( (isnight && Item[i].usItemChoiceTimeSetting == 1) || (!isnight && Item[i].usItemChoiceTimeSetting == 2) )
+				continue;
+
+			legalvec.push_back(i);
+			++usNumMatches;
+		}
+	}
+
+	if ( !legalvec.empty() )
+	{
+		usRandom = (UINT16)Random( legalvec.size() );
+
+		return legalvec[usRandom];
 	}
 
 	return 0;
