@@ -435,13 +435,13 @@ void AddTextToTownBox( void )
 
 	// Flugente: if this is a prison we control, display number of prisoners here
 	UINT8 prisoners[PRISONER_MAX] = { 0 };
-	UINT16 numprisoners = GetNumberOfPrisoners( &(SectorInfo[SECTOR( bCurrentTownMineSectorX, bCurrentTownMineSectorY )]), &prisoners[PRISONER_OFFICER], &prisoners[PRISONER_ELITE], &prisoners[PRISONER_REGULAR], &prisoners[PRISONER_ADMIN] );
+	UINT16 numprisoners = GetNumberOfPrisoners( &(SectorInfo[SECTOR( bCurrentTownMineSectorX, bCurrentTownMineSectorY )]), &prisoners[PRISONER_SPECIAL], &prisoners[PRISONER_ELITE], &prisoners[PRISONER_REGULAR], &prisoners[PRISONER_ADMIN] );
 	if ( numprisoners )
 	{
 		// prisoners
 		swprintf( wString, L"%s:", pwTownInfoStrings[13] );
 		AddMonoString( &hStringHandle, wString );
-		swprintf( wString, L"%d/%d/%d/%d%", prisoners[PRISONER_ADMIN], prisoners[PRISONER_REGULAR], prisoners[PRISONER_ELITE], prisoners[PRISONER_OFFICER] );
+		swprintf( wString, L"%d/%d/%d/%d%", prisoners[PRISONER_ADMIN], prisoners[PRISONER_REGULAR], prisoners[PRISONER_ELITE], prisoners[PRISONER_SPECIAL] );
 		AddSecondColumnMonoString( &hStringHandle, wString );
 	}
 }
