@@ -6558,7 +6558,7 @@ void HandlePrisonerProcessingInSector( INT16 sMapX, INT16 sMapY, INT8 bZ )
 	SECTORINFO *pSectorInfo = &( SectorInfo[ SECTOR( sMapX, sMapY ) ] );
 		
 	UINT8 prisoners[PRISONER_MAX] = {0};
-	UINT16 numprisoners = GetNumberOfPrisoners( pSectorInfo, &prisoners[PRISONER_SPECIAL], &prisoners[PRISONER_ELITE], &prisoners[PRISONER_REGULAR], &prisoners[PRISONER_ADMIN] );
+	UINT16 numprisoners = GetNumberOfPrisoners( pSectorInfo, &prisoners[PRISONER_OFFICER], &prisoners[PRISONER_ELITE], &prisoners[PRISONER_REGULAR], &prisoners[PRISONER_ADMIN] );
 
 	// add interrogation progress from last hour and erase it in data
 	UINT32	interrogationpoints = pSectorInfo->uiInterrogationHundredsLeft;
@@ -6584,7 +6584,6 @@ void HandlePrisonerProcessingInSector( INT16 sMapX, INT16 sMapY, INT8 bZ )
 	{
 		if( pSoldier->bActive && ( pSoldier->sSectorX == sMapX ) && ( pSoldier->sSectorY == sMapY ) && ( pSoldier->bSectorZ == bZ) )
 		{
-			// if he's training teammates in this stat
 			if( ( pSoldier->bAssignment == FACILITY_INTERROGATE_PRISONERS ) && ( EnoughTimeOnAssignment( pSoldier ) ) && ( pSoldier->flags.fMercAsleep == FALSE ) )
 			{
 				++numinterrogators;
@@ -6595,11 +6594,8 @@ void HandlePrisonerProcessingInSector( INT16 sMapX, INT16 sMapY, INT8 bZ )
 			else if( ( pSoldier->bAssignment == FACILITY_PRISON_SNITCH ) && CanCharacterSnitchInPrison(pSoldier) && EnoughTimeOnAssignment( pSoldier ) && ( pSoldier->flags.fMercAsleep == FALSE ) )
 			{
 				// first check if he wasn't exposed
-				if( HandleSnitchExposition(pSoldier) )
-				{
-					//exposition fallout handled in HandleSnitchExposition
-				}
-				else
+				//exposition fallout handled in HandleSnitchExposition
+				if( !HandleSnitchExposition(pSoldier) )
 				{
 					++numinterrogators;
 
@@ -6627,7 +6623,7 @@ void HandlePrisonerProcessingInSector( INT16 sMapX, INT16 sMapY, INT8 bZ )
 		}
 	}
 	
-	UINT16 prisonersinterrogated = interrogatedprisoners[PRISONER_ADMIN] + interrogatedprisoners[PRISONER_REGULAR] + interrogatedprisoners[PRISONER_ELITE] + interrogatedprisoners[PRISONER_SPECIAL];
+	UINT16 prisonersinterrogated = interrogatedprisoners[PRISONER_ADMIN] + interrogatedprisoners[PRISONER_REGULAR] + interrogatedprisoners[PRISONER_ELITE] + interrogatedprisoners[PRISONER_OFFICER];
 	
 	// the part that gets left behind is saved to the map (but not the part that gets lost due to there not being enough prisoners)
 	UINT32  losthundreds = interrogationpoints / 100;
@@ -6636,9 +6632,9 @@ void HandlePrisonerProcessingInSector( INT16 sMapX, INT16 sMapY, INT8 bZ )
 	if ( !prisonersinterrogated )
 		return;
 
-	ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, szPrisonerTextStr[STR_PRISONER_PROCESSED], interrogatedprisoners[PRISONER_ELITE], interrogatedprisoners[PRISONER_REGULAR], interrogatedprisoners[PRISONER_ADMIN]  );
-		
-	UINT8 turnedmilitia_elite = 0, turnedmilitia_regular= 0, turnedmilitia_admin = 0;
+	ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, szPrisonerTextStr[STR_PRISONER_PROCESSED], interrogatedprisoners[PRISONER_OFFICER], interrogatedprisoners[PRISONER_ELITE], interrogatedprisoners[PRISONER_REGULAR], interrogatedprisoners[PRISONER_ADMIN] );
+
+	UINT16 turnedmilitia[PRISONER_MAX] = { 0 };
 	UINT32 revealedpositions = 0;
 	UINT32 ransomscollected = 0;
 	UINT32 ransommoney = 0;
@@ -6651,12 +6647,14 @@ void HandlePrisonerProcessingInSector( INT16 sMapX, INT16 sMapY, INT8 bZ )
 		if ( result < gGameExternalOptions.ubPrisonerProcessDefectChance )
 		{
 			// troops are converted to militia, but there is a chance that they will be demoted in the process
+			if ( i >= interrogatedprisoners[PRISONER_ADMIN] + interrogatedprisoners[PRISONER_REGULAR] + interrogatedprisoners[PRISONER_ELITE] && Chance( 80 ) )
+				++turnedmilitia[PRISONER_OFFICER];
 			if ( i >= interrogatedprisoners[PRISONER_ADMIN] + interrogatedprisoners[PRISONER_REGULAR] && Chance( 80 ) )
-				++turnedmilitia_elite;
+				++turnedmilitia[PRISONER_ELITE];
 			else if ( i >= interrogatedprisoners[PRISONER_ADMIN] && Chance( 80 ) )
-				++turnedmilitia_regular;
+				++turnedmilitia[PRISONER_REGULAR];
 			else
-				++turnedmilitia_admin;
+				++turnedmilitia[PRISONER_ADMIN];
 
 			// we continue so that this guy cannot also run back to the queen
 			continue;
@@ -6717,14 +6715,14 @@ void HandlePrisonerProcessingInSector( INT16 sMapX, INT16 sMapY, INT8 bZ )
 			++giReinforcementPool;
 	}
 		
-	if ( turnedmilitia_elite + turnedmilitia_regular + turnedmilitia_admin )
+	if ( turnedmilitia[PRISONER_ADMIN] + turnedmilitia[PRISONER_REGULAR] + turnedmilitia[PRISONER_ELITE] + turnedmilitia[PRISONER_OFFICER] )
 	{
 		// add these guys to the local garrison as green militias
-		StrategicAddMilitiaToSector(sMapX, sMapY, GREEN_MILITIA,   turnedmilitia_admin);
-		StrategicAddMilitiaToSector(sMapX, sMapY, REGULAR_MILITIA, turnedmilitia_regular);
-		StrategicAddMilitiaToSector(sMapX, sMapY, ELITE_MILITIA,   turnedmilitia_elite);
+		StrategicAddMilitiaToSector( sMapX, sMapY, GREEN_MILITIA,   turnedmilitia[PRISONER_ADMIN] );
+		StrategicAddMilitiaToSector( sMapX, sMapY, REGULAR_MILITIA, turnedmilitia[PRISONER_REGULAR] );
+		StrategicAddMilitiaToSector( sMapX, sMapY, ELITE_MILITIA,   turnedmilitia[PRISONER_ELITE] + turnedmilitia[PRISONER_OFFICER] );
 
-		ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, szPrisonerTextStr[STR_PRISONER_TURN_MILITIA], turnedmilitia_elite, turnedmilitia_regular, turnedmilitia_admin );
+		ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, szPrisonerTextStr[STR_PRISONER_TURN_MILITIA], turnedmilitia[PRISONER_OFFICER], turnedmilitia[PRISONER_ELITE], turnedmilitia[PRISONER_REGULAR], turnedmilitia[PRISONER_ADMIN] );
 	}
 
 	if ( revealedpositions )
@@ -6738,7 +6736,7 @@ void HandlePrisonerProcessingInSector( INT16 sMapX, INT16 sMapY, INT8 bZ )
 	}
 
 	// remove interrogated prisoners...
-	ChangeNumberOfPrisoners( pSectorInfo, -interrogatedprisoners[PRISONER_SPECIAL], -interrogatedprisoners[PRISONER_ELITE], -interrogatedprisoners[PRISONER_REGULAR], -interrogatedprisoners[PRISONER_ADMIN], sMapX, sMapY );
+	ChangeNumberOfPrisoners( pSectorInfo, -interrogatedprisoners[PRISONER_OFFICER], -interrogatedprisoners[PRISONER_ELITE], -interrogatedprisoners[PRISONER_REGULAR], -interrogatedprisoners[PRISONER_ADMIN], sMapX, sMapY );
 
 	// give experience rewards to the interrogators
 	// total experience to share
@@ -6801,14 +6799,9 @@ void HandlePrison( INT16 sMapX, INT16 sMapY, INT8 bZ )
 	// Are there any prisoners in this prison?
 	SECTORINFO *pSectorInfo = &( SectorInfo[ SECTOR( sMapX, sMapY ) ] );
 
-	UINT8 prisonersspecial = 0, prisonerselite = 0, prisonersregular = 0, prisonersadmin = 0;
-	UINT16 numprisoners = GetNumberOfPrisoners( pSectorInfo, &prisonersspecial, &prisonerselite, &prisonersregular, &prisonersadmin );
+	UINT8 prisonersofficer = 0, prisonerselite = 0, prisonersregular = 0, prisonersadmin = 0;
+	UINT16 numprisoners = GetNumberOfPrisoners( pSectorInfo, &prisonersofficer, &prisonerselite, &prisonersregular, &prisonersadmin );
 
-	// for now, simply count specials as elites
-	ChangeNumberOfPrisoners( pSectorInfo, -prisonersspecial, prisonersspecial, 0, 0 );
-	prisonerselite += prisonersspecial;
-	prisonersspecial = 0;
-	
 	if ( !numprisoners )
 		return;
 
@@ -6820,7 +6813,7 @@ void HandlePrison( INT16 sMapX, INT16 sMapY, INT8 bZ )
 	{
 		// add enemies
 		pSectorInfo->ubNumTroops = min(255, pSectorInfo->ubNumTroops + prisonersregular);
-		pSectorInfo->ubNumElites = min(255, pSectorInfo->ubNumElites + prisonerselite);
+		pSectorInfo->ubNumElites = min(255, pSectorInfo->ubNumElites + prisonerselite + prisonersofficer);
 		pSectorInfo->ubNumAdmins = min(255, pSectorInfo->ubNumAdmins + prisonersadmin);
 
 		// all prisoners are free, reduce count!
@@ -6844,16 +6837,14 @@ void HandlePrison( INT16 sMapX, INT16 sMapY, INT8 bZ )
 	prisonguardvalue = CalculateAllGuardsValueInPrison( sMapX, sMapY, bZ );
 
 	// anv: snitches can only prevent mutiny if there are normal guards to cooperate with
-	if( !numprisonguards )
-	{
+	if( numprisonguards )
 		prisonguardvalue += CalculateAllSnitchesGuardValueInPrison( sMapX, sMapY, bZ );
-	}
 
 	if ( !numprisonguards )
 		fBeginRiot = TRUE;
 
 	// we now have to determine the combined strength of the prisoners
-	UINT32 prisonerriotvalue = 125 * prisonerselite + 100 * prisonersregular + 75 * prisonersadmin;
+	UINT32 prisonerriotvalue = 200 * prisonersofficer + 125 * prisonerselite + 100 * prisonersregular + 75 * prisonersadmin;
 
 	if ( prisonerriotvalue > prisonguardvalue )
 	{
@@ -6868,19 +6859,20 @@ void HandlePrison( INT16 sMapX, INT16 sMapY, INT8 bZ )
 			prisonertoguardratio = (FLOAT)(prisonerriotvalue / prisonguardvalue);
 
 		// in a riot, prisoners escape and are added to the sector as enemies. Not all might escape - the worse the prisoner/guard ratio, the more escape
-		UINT8 escapedadmins		= min( Random(prisonersadmin	+ prisonersadmin	* prisonertoguardratio) , prisonersadmin);
-		UINT8 escapedregulars	= min( Random(prisonersregular	+ prisonersregular	* prisonertoguardratio) , prisonersregular);
-		UINT8 escapedelites		= min( Random(prisonerselite	+ prisonerselite	* prisonertoguardratio) , prisonerselite);
+		INT16 escapedadmins		= min( Random( prisonersadmin	* prisonertoguardratio ), prisonersadmin );
+		INT16 escapedregulars	= min( Random( prisonersregular	* prisonertoguardratio ), prisonersregular );
+		INT16 escapedelites		= min( Random( prisonerselite	* prisonertoguardratio ), prisonerselite );
+		INT16 escapedofficers   = min( Random( prisonersofficer	* prisonertoguardratio ), prisonersofficer );
 
 		// add enemies
-		pSectorInfo->ubNumTroops = min(255, pSectorInfo->ubNumTroops + escapedregulars);
-		pSectorInfo->ubNumElites = min(255, pSectorInfo->ubNumElites + escapedelites);
-		pSectorInfo->ubNumAdmins = min(255, pSectorInfo->ubNumAdmins + escapedadmins);
+		pSectorInfo->ubNumTroops = min( 512, pSectorInfo->ubNumTroops + escapedregulars );
+		pSectorInfo->ubNumElites = min( 512, pSectorInfo->ubNumElites + escapedelites + escapedofficers );
+		pSectorInfo->ubNumAdmins = min( 512, pSectorInfo->ubNumAdmins + escapedadmins );
 
 		// reduce prisoner count!
-		ChangeNumberOfPrisoners( pSectorInfo, -prisonersspecial, -escapedelites, -escapedregulars, -escapedadmins, sMapX, sMapY );
+		ChangeNumberOfPrisoners( pSectorInfo, -escapedofficers, -escapedelites, -escapedregulars, -escapedadmins, sMapX, sMapY );
 
-		ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, szPrisonerTextStr[STR_PRISONER_RIOT], wSectorName  );
+		ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, szPrisonerTextStr[STR_PRISONER_RIOT], wSectorName );
 	}
 }
 
@@ -7075,7 +7067,7 @@ void HandleEquipmentMove( INT16 sMapX, INT16 sMapY, INT8 bZ )
 			}
 
 			// use the new map
-			 pWorldItem_Target.clear();//dnl ch75 021113
+			pWorldItem_Target.clear();//dnl ch75 021113
 
 			pWorldItem_Target = pWorldItem_tmp;
 		}

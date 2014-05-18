@@ -1779,7 +1779,7 @@ void LoadGameExternalOptions()
 	gGameExternalOptions.ubPrisonerInterrogationPoints[PRISONER_ADMIN]		= iniReader.ReadInteger("Strategic Gameplay Settings","PRISONER_INTERROGATION_POINTS_ADMIN",	80, 30, 1000);
 	gGameExternalOptions.ubPrisonerInterrogationPoints[PRISONER_REGULAR]	= iniReader.ReadInteger("Strategic Gameplay Settings","PRISONER_INTERROGATION_POINTS_REGULAR", 100, gGameExternalOptions.ubPrisonerInterrogationPoints[PRISONER_ADMIN], 1000);
 	gGameExternalOptions.ubPrisonerInterrogationPoints[PRISONER_ELITE]		= iniReader.ReadInteger("Strategic Gameplay Settings","PRISONER_INTERROGATION_POINTS_ELITE",   100, gGameExternalOptions.ubPrisonerInterrogationPoints[PRISONER_REGULAR], 1000);
-	gGameExternalOptions.ubPrisonerInterrogationPoints[PRISONER_SPECIAL]	= iniReader.ReadInteger("Strategic Gameplay Settings","PRISONER_INTERROGATION_POINTS_SPECIAL", 100, gGameExternalOptions.ubPrisonerInterrogationPoints[PRISONER_ELITE], 1000);
+	gGameExternalOptions.ubPrisonerInterrogationPoints[PRISONER_OFFICER]    = iniReader.ReadInteger("Strategic Gameplay Settings","PRISONER_INTERROGATION_POINTS_SPECIAL", 100, gGameExternalOptions.ubPrisonerInterrogationPoints[PRISONER_ELITE], 1000 );
 		
 	// CHRISL: Determine how Skyrider should handle landing in enemy occupied sectors
 	gGameExternalOptions.ubSkyriderHotLZ					= iniReader.ReadInteger("Strategic Gameplay Settings", "ALLOW_SKYRIDER_HOT_LZ", 0, 0, 3);

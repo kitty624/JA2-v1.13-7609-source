@@ -435,7 +435,7 @@ void AddTextToTownBox( void )
 
 	// Flugente: if this is a prison we control, display number of prisoners here
 	UINT8 prisoners[PRISONER_MAX] = { 0 };
-	UINT16 numprisoners = GetNumberOfPrisoners( &(SectorInfo[SECTOR( bCurrentTownMineSectorX, bCurrentTownMineSectorY )]), &prisoners[PRISONER_SPECIAL], &prisoners[PRISONER_ELITE], &prisoners[PRISONER_REGULAR], &prisoners[PRISONER_ADMIN] );
+	UINT16 numprisoners = GetNumberOfPrisoners( &(SectorInfo[SECTOR( bCurrentTownMineSectorX, bCurrentTownMineSectorY )]), &prisoners[PRISONER_OFFICER], &prisoners[PRISONER_ELITE], &prisoners[PRISONER_REGULAR], &prisoners[PRISONER_ADMIN] );
 	if ( numprisoners )
 	{
 		// determine prison capacity
@@ -457,7 +457,7 @@ void AddTextToTownBox( void )
 		// prisoners
 		swprintf( wString, L"%s:", pwTownInfoStrings[13] );
 		AddMonoString( &hStringHandle, wString );
-		swprintf( wString, L"%d/%d/%d/%d%/%d", prisoners[PRISONER_ADMIN], prisoners[PRISONER_REGULAR], prisoners[PRISONER_ELITE], prisoners[PRISONER_SPECIAL], capacity );
+		swprintf( wString, L"%d/%d - %dA %dR %dE %dO", numprisoners, capacity, prisoners[PRISONER_ADMIN], prisoners[PRISONER_REGULAR], prisoners[PRISONER_ELITE], prisoners[PRISONER_OFFICER] );
 		AddSecondColumnMonoString( &hStringHandle, wString );
 	}
 }
