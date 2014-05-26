@@ -6669,7 +6669,7 @@ void SwapMercPortraits ( SOLDIERTYPE *pSoldier, INT8 bDirection )
 	UINT8 ubGroupID = pSoldier->ubGroupID;
 	INT8 bOldPosition = GetTeamSlotFromPlayerID ( MercPtrs[ ubSourceMerc ]->ubID );
 	INT8 bNewPosition = bOldPosition + bDirection;
-	SOLDIERTYPE TempMercPtr = *MercPtrs[ ubSourceMerc ];
+	SOLDIERTYPE *TempMercPtr = MercPtrs[ ubSourceMerc ];
 
 	// check if new position is occupied by another merc? we won't replace an empty slot
 	if ( gTeamPanel[ bNewPosition ].fOccupied && gTeamPanel[ bNewPosition ].ubID != NOBODY )
@@ -6682,8 +6682,8 @@ void SwapMercPortraits ( SOLDIERTYPE *pSoldier, INT8 bDirection )
 		FACETYPE TempFace = gFacesData[ iSourceFace ];
 
 		// swap the data
-		*MercPtrs[ ubSourceMerc ] = *MercPtrs[ ubTargetMerc ];
-		*MercPtrs[ ubTargetMerc ] = TempMercPtr; 
+		MercPtrs[ ubSourceMerc ] = MercPtrs[ ubTargetMerc ];
+		MercPtrs[ ubTargetMerc ] = TempMercPtr; 
 		// also swap face data, otherwise face gear, opp count etc won't update
 		gFacesData[ iSourceFace ] = gFacesData[ iTargetFace ];
 		gFacesData[ iTargetFace ] = TempFace;
