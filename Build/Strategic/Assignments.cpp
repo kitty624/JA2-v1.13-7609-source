@@ -2912,7 +2912,7 @@ UINT32 CalculateSnitchGuardValue(SOLDIERTYPE *pSoldier, UINT16 *pusMaxPts )
 		return 0;
 
 	// only undercover snitches count
-	if ( !pSoldier->bAssignment == FACILITY_PRISON_SNITCH )
+	if ( pSoldier->bAssignment != FACILITY_PRISON_SNITCH )
 		return 0;
 
 	usValue = 15 * EffectiveExpLevel( pSoldier ) + EffectiveLeadership( pSoldier ) / 2 + 2 * EffectiveWisdom( pSoldier );

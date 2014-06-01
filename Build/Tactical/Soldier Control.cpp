@@ -14168,13 +14168,31 @@ BOOLEAN	SOLDIERTYPE::IsWeaponMounted( void )
 		// for some nefarious reason, trees also have height 2, so we have to check for that too...
 		STRUCTURE * pStructure = FindStructure( nextGridNoinSight, STRUCTURE_TREE );
 
-		if (!pStructure)
+		if ( !pStructure )
 		{
 			// for some reason I find EXTREMELY FRUSTRATING, we might get a heigth of 2 on a totally empty tile... so we check if we could occupy the tile
 			if ( !IsLocationSittable( nextGridNoinSight, 0 ) )
-				// resting our gun on people would be rude - only allow if nobody is there
-				if( WhoIsThere2( nextGridNoinSight, 0 ) == NOBODY )
-					applybipod = TRUE;	
+			{
+				// resting our gun on people is allowed sometimes
+				UINT usPersonID = WhoIsThere2( nextGridNoinSight, this->pathing.bLevel );
+				if ( usPersonID == NOBODY )
+					applybipod = TRUE;
+				else
+				{
+					SOLDIERTYPE* pSoldier = MercPtrs[usPersonID];
+
+					// if the other person is an ally and prone
+					if ( this->bSide == pSoldier->bSide && gAnimControl[pSoldier->usAnimState].ubEndHeight == ANIM_PRONE )
+					{
+						// if we are facing the other guy in a 90 degree angle, we can mount our gun on his back
+						// Once merc's relationship allows angering mercs through actions of others, add a penalty here
+						if ( this->ubDirection == gTwoCCDirection[pSoldier->ubDirection] || this->ubDirection == gTwoCDirection[pSoldier->ubDirection] )
+						{
+							applybipod = TRUE;
+						}
+					}
+				}
+			}
 		}
 	}
 	else if ( adjacenttileheight == 4 && (gAnimControl[ this->usAnimState ].ubEndHeight == ANIM_CROUCH || (gAnimControl[ this->usAnimState ].ubEndHeight == ANIM_STAND && (gAnimControl[ this->usAnimState ].uiFlags &(ANIM_ALT_WEAPON_HOLDING))))) 
@@ -14213,13 +14231,26 @@ BOOLEAN	SOLDIERTYPE::IsWeaponMounted( void )
 		// for some nefarious reason, trees also have height 2, so we have to check for that too...
 		STRUCTURE * pStructure = FindStructure( nextGridNoinSight, STRUCTURE_TREE );
 
-		if (!pStructure)
+		if ( !pStructure )
 		{
 			// for some reason I find EXTREMELY FRUSTRATING, we might get a heigth of 2 on a totally empty tile... so we check if we could occupy the tile
 			if ( !IsLocationSittable( nextGridNoinSight, 0 ) )
-				// resting our gun on people would be rude - only allow if nobody is there
-				if( WhoIsThere2( nextGridNoinSight, 0 ) == NOBODY )
-					applybipod = TRUE;	
+			{
+				// resting our gun on people is allowed sometimes
+				UINT usPersonID = WhoIsThere2( nextGridNoinSight, this->pathing.bLevel );
+				if ( usPersonID == NOBODY )
+					applybipod = TRUE;
+				else
+				{
+					SOLDIERTYPE* pSoldier = MercPtrs[usPersonID];
+
+					// if the other person is an ally and prone
+					if ( this->bSide == pSoldier->bSide && gAnimControl[pSoldier->usAnimState].ubEndHeight == ANIM_CROUCH )
+					{
+						applybipod = TRUE;
+					}
+				}
+			}
 		}
 	}
 	
