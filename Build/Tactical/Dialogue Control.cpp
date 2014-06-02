@@ -2732,13 +2732,9 @@ void HandleTacticalNPCTextUI( UINT8 ubCharacterNum, STR16 zQuoteStr )
 	}
 
 	// post message to mapscreen message system
-#ifdef TAIWANESE
-	swprintf( gTalkPanel.zQuoteStr, L"%s", zQuoteStr );
-#else
 	swprintf( gTalkPanel.zQuoteStr, L"\"%s\"", zQuoteStr );
 	swprintf( zText, L"%s: \"%s\"", gMercProfiles[ ubCharacterNum ].zNickname, zQuoteStr );
 	MapScreenMessage( FONT_MCOLOR_WHITE, MSG_DIALOG, L"%s",	zText );
-#endif
 }
 
 
@@ -2748,7 +2744,6 @@ void DisplayTextForExternalNPC(	UINT8 ubCharacterNum, STR16 zQuoteStr )
 	CHAR16									zText[ QUOTE_MESSAGE_SIZE ];
 	INT16									sLeft;
 
-
 	// Setup dialogue text box
 	if ( guiCurrentScreen != MAP_SCREEN )
 	{
@@ -2757,13 +2752,9 @@ void DisplayTextForExternalNPC(	UINT8 ubCharacterNum, STR16 zQuoteStr )
 	}
 
 	// post message to mapscreen message system
-#ifdef TAIWANESE
-	swprintf( gTalkPanel.zQuoteStr, L"%s", zQuoteStr );
-#else
 	swprintf( gTalkPanel.zQuoteStr, L"\"%s\"", zQuoteStr );
 	swprintf( zText, L"%s: \"%s\"", gMercProfiles[ ubCharacterNum ].zNickname, zQuoteStr );
 	MapScreenMessage( FONT_MCOLOR_WHITE, MSG_DIALOG, L"%s",	zText );
-#endif
 
 	if ( guiCurrentScreen == MAP_SCREEN )
 	{
@@ -2790,11 +2781,7 @@ void HandleTacticalTextUI( INT32 iFaceIndex, SOLDIERTYPE *pSoldier, STR16 zQuote
 	//BUild text
 	// How do we do this with defines?
 	//swprintf( zText, L"\xb4\xa2 %s: \xb5 \"%s\"", gMercProfiles[ ubCharacterNum ].zNickname, zQuoteStr );
-#ifdef TAIWANESE
-	swprintf( zText, L"%s", zQuoteStr );
-#else
 	swprintf( zText, L"\"%s\"", zQuoteStr );
-#endif
 
 	// TODO.RW: Wenn wir in tactical sind, dann normal. In strategy den offset dazurechnen!
 	if ( guiCurrentScreen == GAME_SCREEN )
@@ -2810,12 +2797,6 @@ void HandleTacticalTextUI( INT32 iFaceIndex, SOLDIERTYPE *pSoldier, STR16 zQuote
 	//sLeft = 110;
 
 	ExecuteTacticalTextBox( sLeft, zText );
-
-#ifndef TAIWANESE
-	swprintf( zText, L"%s: \"%s\"", gMercProfiles[ pSoldier->ubProfile ].zNickname, zQuoteStr );
-	MapScreenMessage( FONT_MCOLOR_WHITE, MSG_DIALOG, L"%s",	zText );
-#endif
-
 }
 
 
