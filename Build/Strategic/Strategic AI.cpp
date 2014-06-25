@@ -3274,7 +3274,6 @@ void EvaluateQueenSituation()
 			break;
 	}
 
-	/* // Buggler: Unlimited troops setting will have a constant pool value, limited troops setting should not be able to recruit new troops
 	if( !giReinforcementPool )
 	{ //Queen has run out of reinforcements.	Simulate recruiting and training new troops
 		uiOffset *= 10;
@@ -3282,7 +3281,7 @@ void EvaluateQueenSituation()
 		giReinforcementPool += ( gGameExternalOptions.guiBaseQueenPoolIncrement * gGameOptions.ubDifficultyLevel ) * ( 100 + CurrentPlayerProgressPercentage() ) / 100 ;
 		AddStrategicEvent( EVENT_EVALUATE_QUEEN_SITUATION, GetWorldTotalMin() + uiOffset, 0 );
 		return;
-	}*/
+	}
 
 	//Re-post the event
 	AddStrategicEvent( EVENT_EVALUATE_QUEEN_SITUATION, GetWorldTotalMin() + uiOffset, 0 );
