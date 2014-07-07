@@ -1187,6 +1187,7 @@ STR16 pShowHighGroundText[] =
 };
 
 //Item Statistics.cpp
+/*
 CHAR16 gszActionItemDesc[ 34 ][ 30 ] =	// NUM_ACTIONITEMS = 34
 {
 	L"Mine klaxon",
@@ -1224,6 +1225,7 @@ CHAR16 gszActionItemDesc[ 34 ][ 30 ] =	// NUM_ACTIONITEMS = 34
 	L"Alarme chtsvg",
 	L"Grd lacrymo",
 };
+*/
 
 STR16 pUpdateItemStatsPanelText[] =
 {
