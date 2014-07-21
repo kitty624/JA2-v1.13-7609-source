@@ -9526,7 +9526,7 @@ BOOLEAN InitItemStackPopup( SOLDIERTYPE *pSoldier, UINT8 ubPosition, INT16 sInvX
 	}
 
 	// Set some globals
-	gsItemPopupInvX					= sInvX + xResOffset;
+	gsItemPopupInvX					= sInvX;
 	gsItemPopupInvY					= sInvY;
 	gsItemPopupInvWidth				= sInvWidth;
 	gsItemPopupInvHeight			= sInvHeight;
@@ -9660,7 +9660,7 @@ BOOLEAN InitItemStackPopup( SOLDIERTYPE *pSoldier, UINT8 ubPosition, INT16 sInvX
 	gfInItemStackPopup = TRUE;
 
 	//Restrict mouse cursor to panel
-	aRect.iLeft = sInvX + xResOffset;
+	aRect.iLeft = sInvX + sOffSetX;
 	aRect.iTop = sInvY + sOffSetY;
 	aRect.iRight = aRect.iLeft + min(cnt,sItemWidth) * usPopupWidth;
 	aRect.iBottom = aRect.iTop + (INT32)(ceil((float)cnt/(float)sItemWidth)+1) * usPopupHeight;
