@@ -4155,6 +4155,8 @@ STR16 pHistoryHeaders[] =
 	L"Zdarzenie", 			// the event label
 };
 
+// Externalized to "TableData\History.xml"
+/*
 // various history events
 // THESE STRINGS ARE "HISTORY LOG" STRINGS AND THEIR LENGTH IS VERY LIMITED.
 // PLEASE BE MINDFUL OF THE LENGTH OF THESE STRINGS. ONE WAY TO "TEST" THIS
@@ -4260,6 +4262,7 @@ STR16 pHistoryStrings[] =
 	L"Spotkanie z Waldo - mechanikiem lotniczym.",
 	L"Rozpoczęto naprawę helikoptera. Szacowany czas: %d godzin(y).",
 };
+*/
 
 STR16 pHistoryLocations[] =
 {
