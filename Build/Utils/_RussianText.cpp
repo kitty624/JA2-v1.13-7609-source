@@ -6929,8 +6929,8 @@ STR16 MPClientMessage[] =
 STR16 gszMPEdgesText[] =
 {
 	L"С",	//N
-	L"Ю",	//S
 	L"В",	//E
+	L"Ю",	//S
 	L"З",	//W
 	L"Ц",	// "C"enter
 };
