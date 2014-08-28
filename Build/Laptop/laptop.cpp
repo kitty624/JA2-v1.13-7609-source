@@ -6534,8 +6534,6 @@ void HandleWWWSubSites( void )
 		gfWWWaitSubSitesVisitedFlags[ LAPTOP_MODE_AIM_MEMBERS_FACIAL_INDEX ] = TRUE;
 		gfWWWaitSubSitesVisitedFlags[ LAPTOP_MODE_AIM_MEMBERS ] = TRUE;
 	}
-
-	return;
 }
 
 
@@ -6546,21 +6544,16 @@ void UpdateStatusOfDisplayingBookMarks( void )
 	{
 		gfShowBookmarks = FALSE;
 	}
-
-	return;
 }
 
 
 void InitalizeSubSitesList( void )
 {
-	INT32 iCounter = 0;
-
 	// init all subsites list to not visited
-	for( iCounter = LAPTOP_MODE_WWW + 1 ; iCounter <= LAPTOP_MODE_SIRTECH; iCounter++ )
+	for ( INT32 iCounter = LAPTOP_MODE_WWW + 1; iCounter < LAPTOP_MODE_MAX; ++iCounter )
 	{
-			gfWWWaitSubSitesVisitedFlags[ iCounter - ( LAPTOP_MODE_WWW + 1 ) ] = FALSE;
+		gfWWWaitSubSitesVisitedFlags[ iCounter ] = FALSE;
 	}
-	return;
 }
 
 
@@ -6575,7 +6568,6 @@ void SetSubSiteAsVisted( void )
 	{
 		gfWWWaitSubSitesVisitedFlags[ guiCurrentLaptopMode ] = TRUE;
 	}
-
 }
 
 
