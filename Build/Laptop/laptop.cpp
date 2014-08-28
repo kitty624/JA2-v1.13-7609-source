@@ -502,11 +502,8 @@ BOOLEAN fFlickerHD = FALSE;
 // the screens limiting rect
 SGPRect LaptopScreenRect={ LAPTOP_UL_X,LAPTOP_UL_Y - 5,LAPTOP_SCREEN_LR_X + 2,LAPTOP_SCREEN_LR_Y + 5 + 19};
 
-
-// the sub pages vistsed or not status within the web browser
-BOOLEAN gfWWWaitSubSitesVisitedFlags[LAPTOP_MODE_SIRTECH - LAPTOP_MODE_WWW ];
-
-//INT32 iBookMarkList[MAX_BOOKMARKS];
+// the sub pages visited or not status within the web browser
+BOOLEAN gfWWWaitSubSitesVisitedFlags[LAPTOP_MODE_MAX];
 
 // mouse regions
 MOUSE_REGION gEmailRegion;
@@ -5377,27 +5374,24 @@ void ShowLights( void )
 {
 	// will show lights depending on state
 	HVOBJECT hHandle;
+	GetVideoObject( &hHandle, guiLIGHTS);
 
 	if( fPowerLightOn == TRUE )
 	{
-		GetVideoObject( &hHandle, guiLIGHTS);
-		BltVideoObject(FRAME_BUFFER, hHandle, 0,iScreenWidthOffset + 44, iScreenHeightOffset + 466,	VO_BLT_SRCTRANSPARENCY,NULL);
+		BltVideoObject(FRAME_BUFFER, hHandle, 0, iScreenWidthOffset + 44, iScreenHeightOffset + 466, VO_BLT_SRCTRANSPARENCY,NULL);
 	}
 	else
 	{
-		GetVideoObject( &hHandle, guiLIGHTS);
-		BltVideoObject(FRAME_BUFFER, hHandle, 1,iScreenWidthOffset + 44, iScreenHeightOffset + 466, VO_BLT_SRCTRANSPARENCY,NULL);
+		BltVideoObject(FRAME_BUFFER, hHandle, 1, iScreenWidthOffset + 44, iScreenHeightOffset + 466, VO_BLT_SRCTRANSPARENCY,NULL);
 	}
 
 	if( fHardDriveLightOn == TRUE )
 	{
-		GetVideoObject( &hHandle, guiLIGHTS);
 		BltVideoObject(FRAME_BUFFER, hHandle, 0, iScreenWidthOffset + 88, iScreenHeightOffset + 466, VO_BLT_SRCTRANSPARENCY,NULL);
 	}
 	else
 	{
-		GetVideoObject( &hHandle, guiLIGHTS);
-		BltVideoObject(FRAME_BUFFER, hHandle, 1, iScreenWidthOffset + 88, iScreenHeightOffset + 466,	VO_BLT_SRCTRANSPARENCY,NULL);
+		BltVideoObject(FRAME_BUFFER, hHandle, 1, iScreenWidthOffset + 88, iScreenHeightOffset + 466, VO_BLT_SRCTRANSPARENCY,NULL);
 	}
 
 
@@ -6521,13 +6515,13 @@ void HandleWWWSubSites( void )
 	fConnectingToSubPage = TRUE;
 
 	// fast or slow load?
-	if( gfWWWaitSubSitesVisitedFlags[ guiCurrentLaptopMode - ( LAPTOP_MODE_WWW + 1 ) ] == TRUE )
+	if( gfWWWaitSubSitesVisitedFlags[ guiCurrentLaptopMode ] == TRUE )
 	{
 		fFastLoadFlag = TRUE;
 	}
 
 	// set fact we were here
-	gfWWWaitSubSitesVisitedFlags[ guiCurrentLaptopMode - ( LAPTOP_MODE_WWW + 1 ) ] = TRUE;
+	gfWWWaitSubSitesVisitedFlags[ guiCurrentLaptopMode ] = TRUE;
 
 	//Dont show the dlownload screen when switching between these pages
 	if( ( guiCurrentLaptopMode == LAPTOP_MODE_AIM_MEMBERS ) && ( guiPreviousLaptopMode == LAPTOP_MODE_AIM_MEMBERS_FACIAL_INDEX ) ||
@@ -6537,8 +6531,8 @@ void HandleWWWSubSites( void )
 		fLoadPendingFlag = FALSE;
 
 		// set fact we were here
-		gfWWWaitSubSitesVisitedFlags[ LAPTOP_MODE_AIM_MEMBERS_FACIAL_INDEX - ( LAPTOP_MODE_WWW + 1 ) ] = TRUE;
-		gfWWWaitSubSitesVisitedFlags[ LAPTOP_MODE_AIM_MEMBERS - ( LAPTOP_MODE_WWW + 1 ) ] = TRUE;
+		gfWWWaitSubSitesVisitedFlags[ LAPTOP_MODE_AIM_MEMBERS_FACIAL_INDEX ] = TRUE;
+		gfWWWaitSubSitesVisitedFlags[ LAPTOP_MODE_AIM_MEMBERS ] = TRUE;
 	}
 
 	return;
@@ -6579,7 +6573,7 @@ void SetSubSiteAsVisted( void )
 	}
 	else
 	{
-		gfWWWaitSubSitesVisitedFlags[ guiCurrentLaptopMode - ( LAPTOP_MODE_WWW + 1 ) ] = TRUE;
+		gfWWWaitSubSitesVisitedFlags[ guiCurrentLaptopMode ] = TRUE;
 	}
 
 }
