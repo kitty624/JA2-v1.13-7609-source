@@ -5654,6 +5654,11 @@ void HandleRemovalOfAllTroopsAmongstSectors( void )
 			SectorInfo[ sCurrentSectorValue ].ubNumberOfCivsAtLevel[ GREEN_MILITIA ] = 0;
 			SectorInfo[ sCurrentSectorValue ].ubNumberOfCivsAtLevel[ REGULAR_MILITIA ] = 0;
 			SectorInfo[ sCurrentSectorValue ].ubNumberOfCivsAtLevel[ ELITE_MILITIA ] = 0;
+
+			if( sSectorX == gWorldSectorX && sSectorY == gWorldSectorY )
+			{
+				gfStrategicMilitiaChangesMade = TRUE;
+			}
 		}
 	}
 
