@@ -2200,6 +2200,16 @@ STR16 pTraitSkillsDenialStrings[] =
 	L" - одержимость бесами",
 };
 
+STR16 pSkillMenuStrings[] =	// TODO.Translate
+{
+	L"Militia",
+	L"Other Squads",
+	L"Cancel",
+	L"%d Militia",
+
+	L"All Militia",
+};
+
 STR16 pSnitchMenuStrings[] =
 {
 	// snitch
