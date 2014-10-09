@@ -84,7 +84,7 @@ extern OBJECTTYPE		*gpItemDescOrigAttachmentObject;
 extern OBJECTTYPE		gCloneItemDescObject;
 extern BOOLEAN			fShowMapInventoryPool;
 extern UINT32 guiCurrentItemDescriptionScreen;
-extern BOOLEAN AutoPlaceObjectInInventoryStash( OBJECTTYPE *pItemPtr, INT32 sGridNo );
+extern BOOLEAN AutoPlaceObjectInInventoryStash( OBJECTTYPE *pItemPtr, INT32 sGridNo, INT8 ubLevel );
 // HEADROCK HAM 5: Also need these to trigger Map Inventory changes appropriately.
 extern BOOLEAN fMapInventoryZoom;
 // HEADROCK HAM 5: And this, for checking whether an item is in the pool.
@@ -5769,7 +5769,7 @@ void RemoveProhibitedAttachments(SOLDIERTYPE* pSoldier, OBJECTTYPE* pObj, UINT16
 								if(sGridNo != NOWHERE)
 								{
 									if(guiCurrentItemDescriptionScreen == MAP_SCREEN && fShowMapInventoryPool)
-										AutoPlaceObjectInInventoryStash(&(*iter), sGridNo);
+										AutoPlaceObjectInInventoryStash(&(*iter), sGridNo, ubLevel);
 									else
 										AddItemToPool(sGridNo, &(*iter), 1, ubLevel, WORLD_ITEM_REACHABLE, 0);
 								}
@@ -6924,6 +6924,7 @@ BOOLEAN AutoPlaceObjectToWorld(SOLDIERTYPE * pSoldier, OBJECTTYPE * pObj, INT8 b
 				if( pInventoryPoolList[i].bVisible == 1 && pInventoryPoolList[i].fExists == TRUE && pInventoryPoolList[i].usFlags & WORLD_ITEM_REACHABLE )
 				{
 					sGridNo = pInventoryPoolList[i].sGridNo;
+					bLevel = pInventoryPoolList[i].ubLevel;
 					break;
 				}
 			}
@@ -6934,7 +6935,7 @@ BOOLEAN AutoPlaceObjectToWorld(SOLDIERTYPE * pSoldier, OBJECTTYPE * pObj, INT8 b
 		}
 		
 		fMapPanelDirty = TRUE;
-		return( AutoPlaceObjectInInventoryStash(pObj, sGridNo) );
+		return( AutoPlaceObjectInInventoryStash(pObj, sGridNo, bLevel) );
 	}
 	else
 	{

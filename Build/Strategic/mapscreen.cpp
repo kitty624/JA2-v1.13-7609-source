@@ -7638,7 +7638,7 @@ void GetMapKeyboardInput( UINT32 *puiNewEvent )
 									{
 										if(pSoldier->inv[i].exists() == true)
 										{
-											AutoPlaceObjectInInventoryStash(&pSoldier->inv[i], pSoldier->sGridNo);
+											AutoPlaceObjectInInventoryStash(&pSoldier->inv[i], pSoldier->sGridNo, pSoldier->pathing.bLevel);
 											DeleteObj(&pSoldier->inv[i]);
 										}
 										fTeamPanelDirty = TRUE;
@@ -7649,7 +7649,7 @@ void GetMapKeyboardInput( UINT32 *puiNewEvent )
 									{
 										if(pSoldier->inv[i].exists() == true)
 										{
-											AutoPlaceObjectInInventoryStash(&pSoldier->inv[i], pSoldier->sGridNo);
+											AutoPlaceObjectInInventoryStash(&pSoldier->inv[i], pSoldier->sGridNo, pSoldier->pathing.bLevel);
 											DeleteObj(&pSoldier->inv[i]);
 										}
 										fTeamPanelDirty = TRUE;
@@ -7667,7 +7667,7 @@ void GetMapKeyboardInput( UINT32 *puiNewEvent )
 									{
 										if(pSoldier->inv[i].exists() == true)
 										{
-											AutoPlaceObjectInInventoryStash(&pSoldier->inv[i], pSoldier->sGridNo);
+											AutoPlaceObjectInInventoryStash(&pSoldier->inv[i], pSoldier->sGridNo, pSoldier->pathing.bLevel);
 											DeleteObj(&pSoldier->inv[i]);
 										}
 										fTeamPanelDirty = TRUE;
@@ -8207,7 +8207,7 @@ void GetMapKeyboardInput( UINT32 *puiNewEvent )
 									{
 										if(pSoldier->inv[i].exists() == true)
 										{
-											AutoPlaceObjectInInventoryStash(&pSoldier->inv[i], pSoldier->sGridNo);
+											AutoPlaceObjectInInventoryStash(&pSoldier->inv[i], pSoldier->sGridNo, pSoldier->pathing.bLevel);
 											DeleteObj(&pSoldier->inv[i]);
 										}
 										fTeamPanelDirty = TRUE;
@@ -8218,7 +8218,7 @@ void GetMapKeyboardInput( UINT32 *puiNewEvent )
 									{
 										if(pSoldier->inv[i].exists() == true)
 										{
-											AutoPlaceObjectInInventoryStash(&pSoldier->inv[i], pSoldier->sGridNo);
+											AutoPlaceObjectInInventoryStash(&pSoldier->inv[i], pSoldier->sGridNo, pSoldier->pathing.bLevel);
 											DeleteObj(&pSoldier->inv[i]);
 										}
 										fTeamPanelDirty = TRUE;
