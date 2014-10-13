@@ -1597,7 +1597,7 @@ BOOLEAN EnterVehicle( SOLDIERTYPE *pVehicle, SOLDIERTYPE *pSoldier )
 		if ( IsEnoughSpaceInVehicle( pVehicle->bVehicleID ) )
 		{
 			// OK, add....
-			if ( !AddSoldierToVehicle( pSoldier, pVehicle->bVehicleID, ubSeatIndex) )
+			if ( !AddSoldierToVehicle( pSoldier, pVehicle->bVehicleID ) )
 				return( FALSE);
 
 			if ( !(guiTacticalInterfaceFlags & INTERFACE_MAPSCREEN ) )
