@@ -929,7 +929,7 @@ BOOLEAN ExplosiveDamageStructureAtGridNo( STRUCTURE * pCurrent, STRUCTURE **ppNe
 					// Use tile database for this as apposed to stuct data
 					RemoveAllStructsOfTypeRange( pBase->sGridNo, FIRSTWALLDECAL, FOURTHWALLDECAL );
 					RemoveAllStructsOfTypeRange( pBase->sGridNo, FIFTHWALLDECAL, EIGTHWALLDECAL );
-
+										
 					// Alrighty, now do this
 					// Get orientation
 					// based on orientation, go either x or y dir
@@ -4053,11 +4053,13 @@ void HandleExplosionQueue( void )
 
 				// determine gridno to attack - smoke signal required. Otherwise, it is assumed the radio operator ordered the bombing of his OWN position
 				// if we cannot even find a radio operator, all bets are off - target a random gridno
+				// the usual +/- 2 shenanigans
+				UINT16 usOwner = max( 0, (*pObj)[0]->data.misc.ubBombOwner - 2 );
 				INT32 sTargetGridNo = -1;
-				if ( GetRandomSignalSmokeGridNo(&sTargetGridNo) || GetRadioOperatorSignal((*pObj)[0]->data.misc.ubBombOwner, &sTargetGridNo) || (sTargetGridNo = RandomGridNo()) )
+				if ( GetRandomSignalSmokeGridNo( &sTargetGridNo ) || GetRadioOperatorSignal( usOwner, &sTargetGridNo ) || (sTargetGridNo = RandomGridNo( )) )
 				{
 					for ( UINT8 i = 0; i < cnt; ++i)
-						ArtilleryStrike( pObj->usItem, (*pObj)[0]->data.misc.ubBombOwner, sGridNo, sTargetGridNo );
+						ArtilleryStrike( pObj->usItem, usOwner, sGridNo, sTargetGridNo );
 				}
 
 				// not needed anymore
