@@ -8079,7 +8079,7 @@ INT8 CalcSuppressionTolerance( SOLDIERTYPE * pSoldier )
     // HEADROCK HAM 3.6: This value has moved here. It reduces tolerance if the character is massively shocked.
     if (gGameExternalOptions.ubCowerEffectOnSuppression != 0)
     {
-        if (pSoldier->aiData.bShock > bTolerance)
+        if (CalcEffectiveShockLevel( pSoldier ) > bTolerance)
         {
             bTolerance -= gGameExternalOptions.ubCowerEffectOnSuppression;
         }
@@ -8335,7 +8335,7 @@ void HandleSuppressionFire( UINT8 ubTargetedMerc, UINT8 ubCausedAttacker )
                 fCower = false;
                 // SANDRO - STOMP traits
 				// sevenfm: moved bShockForCower calculation to CalcEffectiveShockLevel()
-				INT8 bShockForCower = CalcEffectiveShockLevel( pSoldier );
+				//INT8 bShockForCower = CalcEffectiveShockLevel( pSoldier );
 				/*
                 INT8 bShockForCower = pSoldier->aiData.bShock;
                 if ( gGameOptions.fNewTraitSystem )
@@ -8359,7 +8359,7 @@ void HandleSuppressionFire( UINT8 ubTargetedMerc, UINT8 ubCausedAttacker )
 					bShockForCower = (INT8)((bShockForCower * (100 - pSoldier->GetFearResistanceBonus()) / 100 ) + 0.5);
                 }
 				*/
-                if (bShockForCower >= bTolerance)
+                if ( CoweringShockLevel(pSoldier) )
                 { 
                     fCower = true; 
 
@@ -10592,4 +10592,18 @@ INT8 CalcEffectiveShockLevel( SOLDIERTYPE * pSoldier )
 		bShockForCower = (INT8)((bShockForCower * (100 - pSoldier->GetFearResistanceBonus()) / 100 ) + 0.5);
 	}
 	return bShockForCower;
+}
+
+BOOLEAN CoweringShockLevel( SOLDIERTYPE * pSoldier )
+{
+	INT8 bTolerance = CalcSuppressionTolerance( pSoldier );
+	INT8 bShock = CalcEffectiveShockLevel( pSoldier );
+
+	// check that character is cowering
+	if (bShock >= bTolerance )
+	{
+		return TRUE;
+	}
+
+	return FALSE;
 }
