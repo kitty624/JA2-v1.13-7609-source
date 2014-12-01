@@ -3526,6 +3526,7 @@ STR16 pwTownInfoStrings[] =
 	L"Milice ", 					// the state of the trained civilians in the town
 	L"Formation mobile ",			// HEADROCK HAM 3.6: The stat of Mobile militia training in town
 	L"Prisonniers ",				// Flugente: display number of prisoners
+	L"%d/%d - %dA %dR %dÉ %dO",		//	Info: Total # of prisoners/capacity - # of Admins # of Regulars # of Elites # of Officers
 };
 
 // Mine strings
