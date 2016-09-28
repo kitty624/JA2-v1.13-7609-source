@@ -674,7 +674,7 @@ STR16 iEditorOptionsToolbarText[]=
 	L"退出编辑模式", //L"Leave Editor mode",
 	L"退出游戏(|A|l|t+|X)", //L"Exit game (|A|l|t+|X)",
 	L"编辑雷达图", //L"Create radar map",
-	L"是否按照原版JA2的地图格式保存 Items with ID > 350 will be lost. \n该选项只对原版大小的地图有效，地图格数不应超过25600个", //L"When checked, the map will be saved in original JA2 map format.\nThis option is only valid on 'normal' size maps that do not reference grid numbers (e.g: exit grids) > 25600.",	// TODO.Translate
+	L"是否按照原版JA2的地图格式保存.\n该选项只对原版大小的地图有效，地图格数不应超过25600个", //L"When checked, the map will be saved in original JA2 map format.\nThis option is only valid on 'normal' size maps that do not reference grid numbers (e.g: exit grids) > 25600.",
 	L"是否自动根据选择的行列数多少来放大地图", //L"When checked and you load a map, the map will be enlarged automatically depending on the selected Rows and Cols.",
 };
 
@@ -707,9 +707,9 @@ STR16 iEditorTaskbarInternalText[]=
 	L"\n|./|,:切换width:xx选项大小\n \n|P|g|U|p/|P|g|D|n:智能模式选择前/后一个模板", //Terrain fasthelp text //L"|./|,: Cycle 'width: xx' dimensions\n|P|g |U|p/|P|g |D|n: Previous/Next tile for selected object(s)/in smart method",
 	L"\n|./|,:切换width:xx选项大小\n \n|P|g|U|p/|P|g|D|n:智能模式选择前/后一个模板", //Buildings fasthelp text //L"|./|,: Cycle 'width: xx' dimensions\n|P|g |U|p/|P|g |D|n: Previous/Next tile for selected object(s)/in smart method",
 	L"|S|p|a|c|e: 选择后一个物品\n|C|t|r|l+|S|p|a|c|e: 选择前一个物品\n \n|/:光标下放置同样物品\n|C|t|r|l+|/:光标处放置新物品", //Items fasthelp text //L"|S|p|a|c|e: Select next item\n|C|t|r|l+|S|p|a|c|e: Select previous item\n \n|/: Place same item under mouse cursor\n|C|t|r|l+|/: Place new item under mouse cursor",
-	L"|1-|9:设置路标 \n|C|t|r|l+|C/|C|t|r|l+|V:复制/粘贴佣兵\n|P|g |U|p/|P|g |D|n: Toggle merc placement level", //Mercs fasthelp text L"|1-|9: Set waypoints\n|C|t|r|l+|C/|C|t|r|l+|V: Copy/Paste merc\n|P|g |U|p/|P|g |D|n: Toggle merc placement level",	// TODO.Translate
-	L"|C|t|r|l+|G:转到某格\n|S|h|i|f|t: Scroll beyond map boundary\n \n(|t|i|l|d|e): Toggle cursor level\n|I:查看小地图\n|J:切换房顶绘制\n|K:显示房顶标记\n|S|h|i|f|t+|L:显示地图边界\n|S|h|i|f|t+|T:显示树顶\n|U:切换地图高度\n \n|./|,:切换width:xx选项大小", //Map Info fasthelp text //L"|C|t|r|l+|G: Go to grid no\n|S|h|i|f|t: Scroll beyond map boundary\n \n(|t|i|l|d|e): Toggle cursor level\n|I: Toggle overhead map\n|J: Toggle draw high ground\n|K: Toggle high ground markers\n|S|h|i|f|t+|L: Toggle map edge points\n|S|h|i|f|t+|T: Toggle treetops\n|U: Toggle world raise\n \n|./|,: Cycle 'width: xx' dimensions",	// TODO.Translate
-	L"|C|t|r|l+|N:创造新地图\n \n|F|5:显示总信息/大地图\n|F|1|0:移除所有光源\n|F|1|1:取消修改\n|F|1|2:清空所有\n \n|S|h|i|f|t+|R:随机放置选定数量的物品\n \nCommand Line options\n|-|D|O|M|A|P|S: Batch radarmap generation\n|-|D|O|M|A|P|S|C|N|V: Batch radarmap generation and covert maps to latest version", //Options fasthelp text //L"|C|t|r|l+|N: Create new map\n \n|F|5: Show Summary Info/Country Map\n|F|1|0: Remove all lights\n|F|1|1: Reverse schedules\n|F|1|2: Clear schedules\n \n|S|h|i|f|t+|R: Toggle random placement based on quantity of selected object(s)\n \nCommand Line options\n|-|D|O|M|A|P|S: Batch radarmap generation\n|-|D|O|M|A|P|S|C|N|V: Batch radarmap generation and covert maps to latest version",	// 
+	L"|1-|9:设置路标 \n|C|t|r|l+|C/|C|t|r|l+|V:复制/粘贴佣兵\n|P|g |U|p/|P|g |D|n: 切换俑兵位置层", //Mercs fasthelp text L"|1-|9: Set waypoints\n|C|t|r|l+|C/|C|t|r|l+|V: Copy/Paste merc\n|P|g |U|p/|P|g |D|n: Toggle merc placement level",
+	L"|C|t|r|l+|G:转到某格\n|S|h|i|f|t: 卷轴超出地图边界\n \n(|t|i|l|d|e): 切换光标层\n|I:查看小地图\n|J:切换房顶绘制\n|K:显示房顶标记\n|S|h|i|f|t+|L:显示地图边界\n|S|h|i|f|t+|T:显示树顶\n|U:切换地图高度\n \n|./|,:切换width:xx选项大小", //Map Info fasthelp text //L"|C|t|r|l+|G: Go to grid no\n|S|h|i|f|t: Scroll beyond map boundary\n \n(|t|i|l|d|e): Toggle cursor level\n|I: Toggle overhead map\n|J: Toggle draw high ground\n|K: Toggle high ground markers\n|S|h|i|f|t+|L: Toggle map edge points\n|S|h|i|f|t+|T: Toggle treetops\n|U: Toggle world raise\n \n|./|,: Cycle 'width: xx' dimensions",
+	L"|C|t|r|l+|N:创造新地图\n \n|F|5:显示总信息/大地图\n|F|1|0:移除所有光源\n|F|1|1:取消修改\n|F|1|2:清空所有\n \n|S|h|i|f|t+|R:随机放置选定数量的物品\n \n命令行选项\n|-|D|O|M|A|P|S: 雷达地图批量生成\n|-|D|O|M|A|P|S|C|N|V: 雷达地图及秘密地图批量生成", //Options fasthelp text //L"|C|t|r|l+|N: Create new map\n \n|F|5: Show Summary Info/Country Map\n|F|1|0: Remove all lights\n|F|1|1: Reverse schedules\n|F|1|2: Clear schedules\n \n|S|h|i|f|t+|R: Toggle random placement based on quantity of selected object(s)\n \nCommand Line options\n|-|D|O|M|A|P|S: Batch radarmap generation\n|-|D|O|M|A|P|S|C|N|V: Batch radarmap generation and covert maps to latest version",	// 
 };
 
 //Editor Taskbar Utils.cpp
@@ -1262,11 +1262,11 @@ STR16 pSetupGameTypeFlagsText[] =
 
 STR16 pSetupGunGUIText[] =
 {
-	L"消声器", //0 //L"SILENCER",
+	L"消音器", //0 //L"SILENCER",
 	L"狙击镜", //L"SNIPERSCOPE",
 	L"激光镜", //L"LASERSCOPE",
 	L"两脚架", //L"BIPOD",
-	L"DUCKBILL", //L"DUCKBILL",
+	L"鸭嘴", //L"DUCKBILL",
 	L"榴弹发射器", //5 //L"G-LAUNCHER",
 };
 
@@ -1496,6 +1496,7 @@ STR16 pDisplaySelectionWindowGraphicalInformationText[] =
 	L"文件：%S，副版本：%d(%d，%S)", //L"File: %S, subindex: %d (%d, %S)",
 	L"当前分区： %s", //L"Tileset:  %s",
 };
+
 STR16 pDisplaySelectionWindowButtonText[] =
 {
 	L"确认选择 (|E|n|t|e|r)",
@@ -2085,7 +2086,7 @@ STR16 pUpperLeftMapScreenStrings[] =
 STR16 pTrainingStrings[] =
 {
 	L"锻炼", // tell merc to train self
-  L"民兵",// tell merc to train town
+    L"民兵",// tell merc to train town
 	L"教练", // tell merc to act as trainer
 	L"学员", // tell merc to be train by other
 };
@@ -2200,14 +2201,14 @@ STR16 pTraitSkillsDenialStrings[] =
 	L" - 恶魔的财产", //L" - posession by a demon"
 };
 
-STR16 pSkillMenuStrings[] =	// TODO.Translate
+STR16 pSkillMenuStrings[] =
 {
-	L"Militia",
-	L"Other Squads",
-	L"Cancel",
-	L"%d Militia",
+	L"民兵",//L"Militia",
+	L"其他小队",//L"Other Squads",
+	L"取消",//L"Cancel",
+	L"%d 民兵",//L"%d Militia",
 
-	L"All Militia",
+	L"所有民兵",//L"All Militia",
 };
 
 STR16 pSnitchMenuStrings[] =
@@ -2283,7 +2284,6 @@ STR16 pSnitchGatheringRumoursResultStrings[] =
 	L"%s听到了在%d分区有敌军活动的谣言。",
 
 };
-
 
 STR16 pRemoveMercStrings[] =
 {
@@ -2934,7 +2934,7 @@ STR16		gzMiscItemStatsFasthelp[ 35 ] =
 	L"洞穴视距修正",
 	L"隧道视野百分比（越低越好）",
 	L"精瞄加成所需最小距离",
-	L"Hold |C|t|r|l to compare items", // item compare help text // TODO.Translate
+	L"按住 |C|t|r|l 点击装备物品", //L"Hold |C|t|r|l to compare items", item compare help text
 };
 
 // HEADROCK: End new tooltip text
@@ -3289,8 +3289,8 @@ CHAR16 TacticalStr[][ MED_STRING_LENGTH ] =
 	// added by Flugente: selection of a function to call in tactical
 	L"你想要做的是什么？",
 	L"装满水壶",
-	L"清理枪支污垢（佣兵）",
-	L"清理所有枪支污垢（小队）",
+	L"清理枪污垢",
+	L"清理所有枪污垢",
 	L"脱掉衣服",
 	L"去掉伪装", //L"Lose disguise",
 	L"民兵检查", //L"Militia inspection",
@@ -3316,7 +3316,6 @@ CHAR16 TacticalStr[][ MED_STRING_LENGTH ] =
 	L"劝说敌人投降",
 	L"劝降", //L"Offer surrender",
 	L"交谈",
-
 
     // added by sevenfm: disarm messagebox options, messages when arming wrong bomb
     L"拆除陷阱",
@@ -3453,7 +3452,7 @@ STR16 pHelicopterEtaStrings[] =
 STR16 pHelicopterRepairRefuelStrings[]=
 {
 	// anv: Waldo The Mechanic - prompt and notifications
-	L"你希望让%s来修理吗？这将话费$%d，而且直升机在%d小时左右将无法起飞。",
+	L"你希望让%s来修理吗？这将花费$%d，而且直升机在%d小时左右将无法起飞。",
 	L"直升机已经拆卸。请等到修理完成。",
 	L"修理完成。直升机已可使用。",
 	L"直升机已加满油。",
@@ -3524,7 +3523,7 @@ STR16 pwTownInfoStrings[] =
 	L"民兵",			// the state of the trained civilians in the town
 	L"巡逻民兵",	// L"Mobile Training",			// HEADROCK HAM 3.6: The stat of Mobile militia training in town
 	L"囚犯",				// Flugente: display number of prisoners
-	L"%d/%d - %dA %dR %dE %dO",		// TODO.Translate	// Info: Total # of prisoners/capacity - # of Admins # of Regulars # of Elites # of Officers
+	L"%d/%d - %dA %dR %dE %dO",		// Info: Total # of prisoners/capacity - # of Admins # of Regulars # of Elites # of Officers
 };
 
 // Mine strings
@@ -3637,21 +3636,21 @@ STR16 pMapScreenInvenButtonHelpText[] =
 	L"离开 (|E|s|c)",	// exit sector inventory
 	L"放大", // HEAROCK HAM 5: Inventory Zoom Button
 	L"合并堆叠同类的物品", // HEADROCK HAM 5: Stack and Merge
-	L"|L|e|f|t |C|l|i|c|k: 将子弹分类装入弹箱\n|R|i|g|h|t |C|l|i|c|k: 将子弹分类装入纸盒", // HEADROCK HAM 5: Sort ammo
+	L"|鼠|标|左|击: 将子弹分类装入弹箱\n|鼠|标|右|击: 将子弹分类装入纸盒", //L"|L|e|f|t |C|l|i|c|k: 将子弹分类装入弹箱\n|R|i|g|h|t |C|l|i|c|k: 将子弹分类装入纸盒", HEADROCK HAM 5: Sort ammo
 	// 6 - 10
 	L"移除所有物品的附件", // HEADROCK HAM 5: Separate Attachments
 	L"退出所有武器的子弹", //HEADROCK HAM 5: Eject Ammo
-	L"|L|e|f|t |C|l|i|c|k: 显示全部物品\n|R|i|g|h|t |C|l|i|c|k: 隐藏全部物品", // HEADROCK HAM 5: Filter Button
-	L"|L|e|f|t |C|l|i|c|k: 切换是否显示武器\n|R|i|g|h|t |C|l|i|c|k|: 只显示武器", // HEADROCK HAM 5: Filter Button
-	L"|L|e|f|t |C|l|i|c|k: 切换是否显示弹药\n|R|i|g|h|t |C|l|i|c|k: 只显示弹药", // HEADROCK HAM 5: Filter Button
+	L"|鼠|标|左|击: 显示全部物品\n|鼠|标|右|击: 隐藏全部物品", // HEADROCK HAM 5: Filter Button
+	L"|鼠|标|左|击: 切换是否显示武器\n|鼠|标|右|击: 只显示武器", // HEADROCK HAM 5: Filter Button
+	L"|鼠|标|左|击: 切换是否显示弹药\n|鼠|标|右|击: 只显示弹药", // HEADROCK HAM 5: Filter Button
 	// 11 - 15
-	L"|L|e|f|t |C|l|i|c|k: 切换是否显示爆炸物\n|R|i|g|h|t |C|l|i|c|k: 只显示爆炸物", // HEADROCK HAM 5: Filter Button
-	L"|L|e|f|t |C|l|i|c|k: 切换是否显示近战武器\n|R|i|g|h|t |C|l|i|c|k: 只显示近战武器", // HEADROCK HAM 5: Filter Button
-	L"|L|e|f|t |C|l|i|c|k: 切换是否显示护甲\n|R|i|g|h|t |C|l|i|c|k: 只显示护甲", // HEADROCK HAM 5: Filter Button
-	L"|L|e|f|t |C|l|i|c|k: 切换是否显示携行具\n|R|i|g|h|t |C|l|i|c|k: 只显示携行具", // HEADROCK HAM 5: Filter Button
-	L"|L|e|f|t |C|l|i|c|k: 切换是否显示套装包\n|R|i|g|h|t |C|l|i|c|k: 只显示套装包", // HEADROCK HAM 5: Filter Button
+	L"|鼠|标|左|击: 切换是否显示爆炸物\n|鼠|标|右|击: 只显示爆炸物", // HEADROCK HAM 5: Filter Button
+	L"|鼠|标|左|击: 切换是否显示近战武器\n|鼠|标|右|击: 只显示近战武器", // HEADROCK HAM 5: Filter Button
+	L"|鼠|标|左|击: 切换是否显示护甲\n|鼠|标|右|击: 只显示护甲", // HEADROCK HAM 5: Filter Button
+	L"|鼠|标|左|击: 切换是否显示携行具\n|鼠|标|右|击: 只显示携行具", // HEADROCK HAM 5: Filter Button
+	L"|鼠|标|左|击: 切换是否显示套装包\n|鼠|标|右|击: 只显示套装包", // HEADROCK HAM 5: Filter Button
 	// 16 - 20
-	L"|L|e|f|t |C|l|i|c|k: 切换是否显示杂项物品\n|R|i|g|h|t |C|l|i|c|k: 只显示杂项物品", // HEADROCK HAM 5: Filter Button
+	L"|鼠|标|左|击: 切换是否显示杂项物品\n|鼠|标|右|击: 只显示杂项物品", // HEADROCK HAM 5: Filter Button
 	L"切换搬运中的物品", // Flugente: move item display
 };
 
@@ -5827,13 +5826,13 @@ STR16	gzMPJScreenText[] =
 STR16 gzMPJHelpText[] =
 {
 	L"访问 http://webchat.quakenet.org/?channels=ja2-multiplayer 寻找其他玩家.",  //Visit http://webchat.quakenet.org/?channels=ja2-multiplayer to find other players
-	L"您可以按“Y”，打開遊戲中的聊天窗口，之後你一直連接到服務器.",	// TODO.Translate
+	L"您可以按“Y”，打開遊戲中的聊天窗口，之後你一直連接到服務器.",
 	
-	L"HOST",
+	L"主机",//L"HOST",
 	L"输入IP地址，端口号必须大于60000",  //Enter '127.0.0.1' for the IP and the Port number should be greater than 60000.
 	L"确保(UDP, TCP)端口由你的路由器转发，更多信息请看http://portforward.com",   //Be sure that the Port (UDP, TCP) is forwarded on your Router. For more information see: http://portforward.com
 	L"你必须将你的外网IP通过QQ或者什么，告诉其他玩家",   //You have to send (via IRC, ICQ, etc) your external IP (http://www.whatismyip.com) and the Port number to the other players.
-	L"点击“Host”创建一个新的局域网游戏",   //Click on 'Host' to host a new Multiplayer Game.
+	L"点击“主机”创建一个新的局域网游戏",   //Click on 'Host' to host a new Multiplayer Game.
 	
 	L"加入",  //JOIN
 	L"主机需要发送外网IP和端口",               //The host has to send (via IRC, ICQ, etc) you the external IP and the Port number
@@ -6255,7 +6254,6 @@ STR16 pNewNoiseStr[] =
 	L"%s听到%s某人的说话声来自%s.", // anv: report enemy taunt to player
 };
 
-
 STR16 pTauntUnknownVoice[] =
 {
 	L"不明说话声",
@@ -6502,21 +6500,21 @@ STR16 gzLateLocalizedString[] =
 	L"没有找到铁血联盟2光盘，程序即将退出。", //The Jagged Alliance 2 v1.13 PLAY DISK was not found. Program will now exit.
 
 	L"物品组合成功。",
- 
+	
 	//58
 	//Displayed with the version information when cheats are enabled.
 	L"当前/最大进展:  %d%％/%d%％",		//"Current/Max Progress: %d%%/%d%%",//zww
 
-	L"护送John和Mary？",
+	L"护送John和Mary？", //L"Escort John and Mary?",
 	
 	// 60
-	L"开关被激活",		//"Switch Activated.",
+	L"开关被激活", //"Switch Activated.",
 
-	L"%s的陶瓷片已经粉碎了!",	//"%s's ceramic plates have been smashed!",
-	L"%s多打了%d发子弹！",	//"%s fires %d more rounds than intended!",
-	L"%s多打了1发子弹！",	//"%s fires %d more round than intended!",
+	L"%s的陶瓷片已经粉碎了!", //"%s's ceramic plates have been smashed!",
+	L"%s多打了%d发子弹！", //"%s fires %d more rounds than intended!",
+	L"%s多打了1发子弹！", //"%s fires %d more round than intended!",
 
-	L"你得先关闭物品信息界面！",
+	L"你得先关闭物品信息界面！", //L"You need to close the item description box first!",
 
 	L"无法快进 - 该分区有敌对的市民和/或血猫。", // 65	//L"Cannot compress time - hostile civilians and/or bloodcats are in this sector.",
 };
@@ -6637,7 +6635,7 @@ STR16 New113Message[] =
 	L"%s命根子中弹，痛苦的倒下了！",// L"%s is hit to groin and falls down in pain!",	
 	//////////////////////////////////////////////////////////////////////////////////////
 	L"注意: 敌人尸体被发现!!!",
-	L"%s [%d rnds]\n%s %1.1f %s",		
+	L"%s [%d 发]\n%s %1.1f %s",	//	L"%s [%d rnds]\n%s %1.1f %s",
 	L"AP不够！需要%d，你只有%d。",	//L"Insufficient AP Points! Cost %d, you have %d.",
 	L"提示: %s",
 	L"玩家力量: %d - 敌人力量: %6.0f",		//Surrender values to be printed, if DISPLAY_SURRENDER_VALUES = TRUE
@@ -7238,8 +7236,8 @@ STR16 gzFacilityAssignmentStrings[]=
 };
 STR16 Additional113Text[]=
 {
-	L"Jagged Alliance 2 v1.13 窗口模式需要一个16bpp的颜色深度。",
-	L"Jagged Alliance 2 v1.13 fullscreen mode (%d x %d) is not supported by your primary screen.\nPlease either change the game resolution or use 16bpp windowed mode.",	// TODO.Translate
+	L"铁血联盟2 v1.13 窗口模式需要一个16bpp的颜色深度.",
+	L"铁血联盟2 v1.13 全屏模式(%d x %d)不支持你的显示屏分辨率.\n请改变游戏分辨率或使用16bpp窗口模式.",	//L"Jagged Alliance 2 v1.13 fullscreen mode (%d x %d) is not supported by your primary screen.\nPlease either change the game resolution or use 16bpp windowed mode.",
 	L"存盘文件内部读取错误：存盘文件的“%s”数量跟 Ja2_Options.ini 设置的（$d）不一致。",	//L"Internal error in reading %s slots from Savegame: Number of slots in Savegame (%d) differs from defined slots in ja2_options.ini settings (%d)",	
 	// WANNE: Savegame slots validation against INI file
 	L"佣兵 (MAX_NUMBER_PLAYER_MERCS) / 交通工具 (MAX_NUMBER_PLAYER_VEHICLES)", 
@@ -7980,41 +7978,41 @@ STR16	gszPocketPopupText[]=
 // Flugente: externalised texts for some features
 STR16	szCovertTextStr[]=
 {
-	L"%s 有迷彩油的痕迹！", //L"%s has camo!",
+	L"%s 有迷彩油（血）的痕迹！", //L"%s has camo!",
 	L"%s 有不合身份的背包！", //L"%s has a backpack!",
 	L"%s 被发现携带尸体！", //L"%s is seen carrying a corpse!",
-	L"%s's %s 可疑!", // L"%s's %s is suspicious!",
-	L"%s's %s 属于军用装备!", // 	L"%s's %s is considered military hardware!",
+	L"%s 的 %s 可疑!", // L"%s's %s is suspicious!",
+	L"%s 的 %s 属于军用装备!", // 	L"%s's %s is considered military hardware!",
 	L"%s 携带了太多的枪支！", //L"%s carries too many guns!",
-	L"%s's %s 对于%s士兵来说太先进了!", //	L"%s's %s is too advanced for an arulcan soldier!",
-	L"%s's %s 有太多附件!", //	L"%s's %s has too many attachments!",
+	L"%s 的 %s 对于 %s 士兵来说太先进了!", //	L"%s's %s is too advanced for an arulcan soldier!",
+	L"%s 的 %s 有太多附件!", //	L"%s's %s has too many attachments!",
 	L"%s 被发现有可疑举动！", //L"%s was seen performing suspicious activities!",
 	L"%s 被发现不像个平民！", //L"%s does not look like a civilian!",
-	L"%s 被发现流血不止了！", //L"%s bleeding was discovered!",
+	L"%s 被发现受伤流血不止！", //L"%s bleeding was discovered!",
 	L"%s 醉醺醺的完全不像个士兵！", //L"%s is drunk and doesn't look like a soldier!",
-	L"%s 的伪装在近距离观察下HOLD不住了！", //L"On closer inspection, %s's disguise does not hold!",
+	L"%s 的伪装在近距离观察下暴露了！", //L"On closer inspection, %s's disguise does not hold!",
 	L"%s 不应该出现在这里！", //L"%s isn't supposed to be here!",
 	L"%s 不应该在这个时候出现在这里！", //L"%s isn't supposed to be here at this time!",
 	L"%s 被发现在新鲜尸体旁边行踪诡秘！", //L"%s was seen near a fresh corpse!",
-	L"%s 被认为是针对 %s 的!",	// 	L"%s is seen targetting %s!",
-	L"%s 被发现瞄准了其他士兵！", //L"%s is seen targeting a soldier!",
-	L"%s 被识破了 %s 伪装！", //L"%s has seen through %s disguise!",
+	L"%s 装备暴露了伪装！",	// 	L"%s is seen targetting %s!",
+	L"%s 被目标发现 %s！", //L"%s is seen targeting a soldier!",
+	L"%s 识破了 %s 的伪装！", //L"%s has seen through %s disguise!",
 	L"无法找到对应的衣服信息在 Items.xml 中！", //L"No clothes item found in Items.xml!",
-	L"这在传统特性系统下无法工作！", //L"This does not work with the old trait system!",
+	L"这在传统特性（旧）系统下无法工作！", //L"This does not work with the old trait system!",
 	L"行动点数（AP）不足！", //L"Not enough Aps!",
 	L"色板无效！", //L"Bad palette found!",
 	L"你得有伪装技能才能做这个！", //L"You need the covert skill to do this!",
 	L"未发现制服！", //L"No uniform found!",
 	L"%s 已伪装成平民", //L"%s is now disguised as a civilian.",
 	L"%s 已伪装成士兵", //L"%s is now disguised as a soldier.",
-	L"%s穿着件破破烂烂的制服！", // L"%s wears a disorderly uniform!",
+	L"%s 穿着件破破烂烂的制服！（Ctrl+. 去除伪装）", // L"%s wears a disorderly uniform!",
 	L"事后看来，穿着伪装去投降不是什么好主意…", // L"In retrospect, asking for surrender in disguise wasn't the best idea...",
-	L"%s被发现了！", // L"%s was uncovered!",
-	L"%s的伪装看起来还可以…", // L"%s's disguise seems to be ok...",
-	L"%s的伪装要被识破了。", // L"%s's disguise will not hold.",
-	L"%s在偷窃的时候被抓了！", // L"%s was caught stealing!",
-	L"%s在试图调整%s的物品栏。", // L"%s tried to manipulate %s's inventory."
-	L"%s太靠近精英士兵了。",
+	L"%s 被发现了！", // L"%s was uncovered!",
+	L"%s 的伪装看起来还可以…", // L"%s's disguise seems to be ok...",
+	L"%s 的伪装要被识破了。", // L"%s's disguise will not hold.",
+	L"%s 在偷窃的时候被抓了！", // L"%s was caught stealing!",
+	L"%s 在试图调整 %s 的装备物品。", // L"%s tried to manipulate %s's inventory."
+	L"%s 太靠近精英士兵了！", //L"An elite soldier did not recognize %s!",
 };
 
 STR16	szCorpseTextStr[]=
@@ -8209,6 +8207,7 @@ STR16		szPersonalityHelpText[]=
 	L"你是哪个种族？你讨厌所有非本族人。", //L"What is your race? You will be\nracist against all other races.",
 	L"你的性别歧视程度如何？", //L"How sexist are you against the other gender?",
 };
+
 
 STR16		szRaceText[]=
 {
