@@ -4869,12 +4869,12 @@ STR16			BobbyRFilter[] =
 	L"工具套装", //"Kits",
 	L"头部装备", //"Face Items",
 	L"携行具", //"LBE Gear",
-	L"瞄镜", // Madd: new BR filters
-	L"握把/LAM",
-	L"消音等",
-	L"枪托",
-	L"弹夹/握把",
-	L"其他附件",
+	L"瞄具", //L"Optics", Madd: new BR filters
+	L"握把/脚架", //L"Grip/LAM",
+	L"消音类", //L"Muzzle",
+	L"枪托", //L"Stock",
+	L"弹匣/板机", //L"Mag/Trig.",
+	L"其他附件", //L"Other Att.",
 	L"其他", //"Misc.",
 };
 
@@ -7967,12 +7967,12 @@ STR16	zNewTacticalMessages[]=
 // The_bob : pocket popup text defs
 STR16	gszPocketPopupText[]=
 {
-	L"榴弹发射器",	// POCKET_POPUP_GRENADE_LAUNCHERS,
-	L"火箭发射器",	// POCKET_POPUP_ROCKET_LAUNCHERS
-	L"格斗&投掷武器",	// POCKET_POPUP_MEELE_AND_THROWN
-	L"- 没有合适的弹药 -",	//POCKET_POPUP_NO_AMMO
-	L"- 区域存货没有武器 -",	//POCKET_POPUP_NO_GUNS
-	L"更多...",		//POCKET_POPUP_MOAR
+	L"榴弹发射器", //L"Grenade launchers",	// POCKET_POPUP_GRENADE_LAUNCHERS,
+	L"火箭发射器", //L"Rocket launchers",	// POCKET_POPUP_ROCKET_LAUNCHERS
+	L"格斗武器", //L"Melee & thrown weapons",  POCKET_POPUP_MEELE_AND_THROWN
+	L"- 没有合适的弹药 -", //L"- no matching ammo -",	//POCKET_POPUP_NO_AMMO
+	L"- 区域存货没有武器 -",	//L"- no guns in inventory -",	//POCKET_POPUP_NO_GUNS
+	L"更多...", //L"more...",		//POCKET_POPUP_MOAR
 };
 
 // Flugente: externalised texts for some features
@@ -8048,17 +8048,17 @@ STR16	szFoodTextStr[]=
 
 STR16	szPrisonerTextStr[]=
 {
-	L"%d 军官，%d 精英士兵，%d 普通士兵，%d 巡逻官，%d 平民 都被审问。", //L"%d officers, %d elites, %d regulars and %d admins were interrogated.",
-	L"%d 名俘虏已支付赎金", //L"%d prisoners paid ransom money.",
-	L"%d 名俘虏已供出同伙位置", //L"%d prisoners revealed enemy positions.",
-	L"%d 军官，%d 精英士兵，%d 普通士兵，%d 巡逻官 加入了我方。", //L"%d officers, %d elites, %d regulars and %d admins joined our cause.",
+	L"%d名军官，%d名精英士兵，%d名普通士兵，%d名巡逻兵被审问了。", //L"%d officers, %d elites, %d regulars and %d admins were interrogated.",
+	L"%d名俘虏已支付赎金。", //L"%d prisoners paid ransom money.",
+	L"%d名俘虏已供出同伙位置。", //L"%d prisoners revealed enemy positions.",
+	L"%d名军官，%d名精英士兵，%d名普通士兵，%d名巡逻兵加入了我方。", //L"%d officers, %d elites, %d regulars and %d admins joined our cause.",
 	L"俘虏掀起大规模暴动！在 %s 监狱！", //L"Prisoners start a massive riot in %s!",
-	L"%d 俘虏被押送前往 %s 监狱", //L"%d prisoners were sent to %s!",
+	L"%d名俘虏被押送前往 %s 监狱", //L"%d prisoners were sent to %s!",
 	L"俘虏已被释放！", //L"Prisoners have been released!",
 	L"军队已占领 %s 监狱，俘虏已被释放！", //L"The army now occupies the prison in %s, the prisoners were freed!",
 	L"敌人宁死不从！",//L"The enemy refuses to surrender!",
 	L"敌人不肯拿你当囚犯 - 他们宁愿你死！",	//L"The enemy refuses to take you as prisoners - they prefer you dead!",
-	L"这些可以在 INI 设置关闭。",	// 	L"This behaviour is set OFF in your ini settings.",
+	L"此功能在 INI 设置未开启。",	// 	L"This behaviour is set OFF in your ini settings.",
 	L"%s 释放了 %s！", //L"%s has freed %s!",
 };
 
