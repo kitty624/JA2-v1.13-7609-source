@@ -114,7 +114,7 @@ STR16 gzIMPMajorTraitsHelpTextsHeavyWeapons[]=
 	L"火箭筒命中率 +%d%s\n",// L"+%d%s chance to hit with rocket launchers\n",
 	L"发射迫击炮所需行动点 -%d%s\n",// L"-%d%s APs needed to fire mortar\n",
 	L"迫击炮命中率惩罚修正 -%d%s\n",// L"Reduce penalty for mortar CtH by %d%s\n",
-	L"爆炸物, 手榴弹和重武器对坦克的额外伤害 +%d%s\n",// L"+%d%s damage to tanks with heavy weapons, grenades and explosives\n",
+	L"爆破物, 手榴弹和重武器对坦克的额外伤害 +%d%s\n",// L"+%d%s damage to tanks with heavy weapons, grenades and explosives\n",
 	L"重武器对其他目标的伤害 +%d%s\n",// L"+%d%s damage to other targets with heavy weapons\n",
 
 };

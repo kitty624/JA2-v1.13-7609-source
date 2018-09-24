@@ -2778,7 +2778,7 @@ STR16 gpStrategicString[] =
 	//Various strings (translate word for word)
 
 	L"分区",
-	L"选择进入的位置",
+	L"选择进入的位置（大地图可以按“↑”“↓”“←”“→”键来移动屏幕）",
 
 	//Strings used for various popup message boxes.  Can be as long as desired.
 
@@ -5626,7 +5626,7 @@ STR16	zOptionsScreenHelpText[] =
 	L"打开时，使用铁血联盟1代的佣兵选择方式。",
 
 	//Show movement path
-	L"打开时，会实时显示移动路径(可用 |S|h|i|f|t 键来打开或者关闭)。",
+	L"打开时，会实时显示移动路径(可用|S|h|i|f|t键来打开或者关闭)。",
 
 	//show misses
 	L"打开时，会显示未击中目标的子弹落点。",
@@ -5641,7 +5641,7 @@ STR16	zOptionsScreenHelpText[] =
 	L"打开时，使用公制系统，否则使用英制系统。",
 
 	//Merc Lighted movement
-	L"打开时，佣兵移动时会照亮地表（关闭这个选项会使游戏的显示速度变快）。\n切换虚拟佣兵光照。 (|C|t|r|l+|A|l|t+|G)",
+	L"打开时，佣兵移动时会照亮地表（关闭这个选项会使游戏的显示速度变快）。\n切换虚拟佣兵光照。(|C|t|r|l+|A|l|t+|G) ",
 
 	//Smart cursor
 	L"打开时，光标移动到佣兵身上时会高亮显示佣兵。",
@@ -5650,40 +5650,40 @@ STR16	zOptionsScreenHelpText[] =
 	L"打开时，光标靠近门时会自动定位到门上。",
 
 	//glow items
-	L"打开时，物品会不断的闪烁。(|C|t|r|l+|A|l|t+|I)",
+	L"打开时，物品会不断的闪烁。(|C|t|r|l+|A|l|t+|I) ",
 
 	//toggle tree tops
-	L"打开时，显示树冠。(|T)",
+	L"打开时，显示树冠。(|T) ",
 
 	//toggle wireframe
-	L"打开时，显示未探明的墙的轮廓。(|C|t|r|l+|A|l|t+|W)",
+	L"打开时，显示未探明的墙的轮廓。(|C|t|r|l+|A|l|t+|W) ",
 
-	L"打开时，移动时的光标为3D式样。(|H|o|m|e)",
+	L"打开时，移动时的光标为3D式样。(|H|o|m|e) ",
 
 	// Options for 1.13
 	L"打开时，在光标上显示命中机率。",
 	L"打开时，榴弹发射器点射使用点射的准星。",
 	L"打开时，敌人行动中有时会带有对白。", // Changed from Enemies Drop All Items - SANDRO
-	L"打开时，榴弹发射器允许采用较高仰角发射榴弹(|Q)。",
-	L"打开时，潜行状态未被敌人发现时不会进入回合制模式，除非按下 |C|t|r|l+|X 。 (|C|t|r|l+|S|h|i|f|t+|X)", // Changed from Restrict Extra Aim Levels - SANDRO
-	L"打开时，按空格键自动切换到下一小队(|S|p|a|c|e)。",
+	L"打开时，榴弹发射器允许采用较高仰角发射榴弹。(|Q) ",
+	L"打开时，潜行状态未被敌人发现时不会进入回合制模式，除非按下|C|t|r|l+|X 。(|C|t|r|l+|S|h|i|f|t+|X)  ", // Changed from Restrict Extra Aim Levels - SANDRO
+	L"打开时，按空格键自动切换到下一小队。(|S|p|a|c|e) ",
 	L"打开时，显示物品阴影。",
 	L"打开时，用格数显示武器射程。",
 	L"打开时，单发曳光弹也显示曳光。",
 	L"打开时，下雨时能听到雨水音效。",	//"When ON, you will hear rain noises when it is raining.",
 	L"打开时，允许乌鸦出现。",
-	L"打开时，把光标定位在敌人身上并且按下 |A|l|t 键会显示敌兵装备信息窗口。",
-	L"打开时，游戏将在玩家回合后自动存盘",
+	L"打开时，把光标定位在敌人身上并且按下|A|l|t键会显示敌兵装备信息窗口。",
+	L"打开时，游戏将在玩家回合后自动存盘。",
 	L"打开时，Skyrider保持沉默。",
 	L"打开时，使用物品及武器的“增强描述框”（EDB）。",
-	L"打开时，在战术画面内存在敌军时，将一直处于回合制模式直至该地区所有敌军被消灭。（可以通过快捷键 (|C|t|r|l+|T) 来控制打开或关闭强制回合制模式）",
+	L"打开时，在战术画面内存在敌军时，将一直处于回合制模式直至该地区所有敌军被消灭。（可以通过快捷键|C|t|r|l+|T来控制打开或关闭强制回合制模式）",
 	L"打开时，显示各属性的增长进度。", // L"When ON, shows character progress towards gaining levels.", //ham3.6
 	L"打开时，战略地图将会根据探索状态显示不同的着色。",
 	L"打开时，当你射击时会显示间隔子弹图像。",
 	L"打开时，在战略界面的佣兵名旁显示军衔。",
 	L"打开时，显示佣兵脸部装备图。",
-	L"打开时，佣兵肖像右下角显示脸部装备图标",
-	L"打开时，在交换位置和其他动作时光标不切换。键入 |x 可以快速切换。",
+	L"打开时，佣兵肖像右下角显示脸部装备图标。",
+	L"打开时，在交换位置和其他动作时光标不切换。按|x可以快速切换。",
 	L"打开时，佣兵训练时不会随时汇报进程。",
 	L"打开时，佣兵修理时不会随时汇报进程。",
 	L"打开时，佣兵医疗时不会随时汇报进程。",
@@ -5696,9 +5696,9 @@ STR16	zOptionsScreenHelpText[] =
 	L"打开时，会直接显示该区域最后一个敌人的大致位置。",
 	L"打开时，在区域物品栏界面，右键点击装有物品的携行具时可直接显示包含的物品。",
 	L"打开时，反转鼠标滚轮方向。",
-	L"当选择了多个佣兵，他们在前进时会保持彼此的间距。(|G)",	// L"When multiple mercs are selected, they will try to keep their relative distances while moving. (|C|t|r|l+|S|h|i|f|t+|G)",
+	L"当选择了多个佣兵，他们在前进时会保持彼此的间距。(|G) ",	// L"When multiple mercs are selected, they will try to keep their relative distances while moving. (|C|t|r|l+|S|h|i|f|t+|G)",
 	L"(text not rendered)TOPTION_CHEAT_MODE_OPTIONS_HEADER",
-	L"强制 Bobby Ray 出货",
+	L"强制Bobby Ray出货",
 	L"(text not rendered)TOPTION_CHEAT_MODE_OPTIONS_END",
 	L"(text not rendered)TOPTION_DEBUG_MODE_OPTIONS_HEADER", // an example options screen options header (pure text)
 	L"|H|A|M |4 |D|e|b|u|g: 当打开时, 将报告每个子弹偏离目标中心点的距离，考虑各种NCTH因素。",
