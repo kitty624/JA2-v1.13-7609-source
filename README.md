@@ -20,7 +20,7 @@
 
 - it's based on the latest commit before svn to gitHub migration (September 24, 2018) and contains all bugfixes up to this date
 
-- of course the SCI also contains the exe, the standard 7609-exe    
+- of course the SCI also contains the exe, the standard 7609-exe (plus UB for 7609 and matching MapEditor)    
 
 *Compiling an exe out of this sourcecode*
 
